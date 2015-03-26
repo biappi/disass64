@@ -71,37 +71,98 @@ var opctab= [
     ['???','imp'], ['SBC','abx'], ['INC','abx'], ['???','imp']
 ];
 
-var addrtab= {
-    acc:'A',
-    abs:'abs',
-    abx:'abs,X',
-    aby:'abs,Y',
-    imm:'#',
-    imp:'impl',
-    ind:'ind',
-    inx:'X,ind',
-    iny:'ind,Y',
-    rel:'rel',
-    zpg:'zpg',
-    zpx:'zpg,X',
-    zpy:'zpg,Y'
-}
+var addressing_modes = {
+    imp: {
+        size:   1,
+        format: function(inst) { return ''; },
+        value:  function(inst) { return null; },
+    },
 
-var steptab = {
-    imp:1,
-    acc:1,
-    imm:2,
-    abs:3,
-    abx:3,
-    aby:3,
-    zpg:2,
-    zpx:2,
-    zpy:2,
-    ind:3,
-    inx:2,
-    iny:2,
-    rel:2
-};
+    imm: {
+        size:   2,
+        format: function(inst) { return ' #$' + getHexByte(this.value(inst)); },
+        value:  function(inst) { return inst.op1; },
+    },
+
+    zpg: {
+        size:   2,
+        format: function(inst) { return ' $' + getHexByte(this.value(inst)); },
+        value:  function(inst) { return inst.op1; },
+    },
+
+    acc: {
+        size:   1,
+        format: function(inst) { return' A'; },
+        value:  function(inst) { return null; },
+    },
+
+    abs: {
+        size:   3,
+        format: function(inst) { return ' $' + getHexWord(this.value(inst)); },
+        value:  function(inst) { return inst.op2 << 8 || inst.op1; }
+    },
+
+    zpx: {
+        size:   2,
+        format: function(inst) { return ' $' + getHexByte(this.value(inst)) + ',X'; },
+        value:  function(inst) { return inst.op1; }
+    },
+
+    zpy: {
+        size:   2,
+        format: function(inst) { return ' $' + getHexWord(this.value(inst)) + ',Y'; },
+        value:  function(inst) { return inst.op1; }
+    },
+
+    abx: {
+        size:   3,
+        format: function(inst) { return ' $' + getHexWord(this.value(inst)) + ',X'; },
+        value:  function(inst) { return inst.op2 << 8 || inst.op1; }
+    },
+
+    aby: {
+        size:   3,
+        format: function(inst) { return ' $' + getHexWord(this.value(inst)) + ',Y'; },
+        value:  function(inst) { return inst.op2 << 8 || inst.op1; }
+    },
+
+    iny: {
+        size:   2,
+        format: function(inst) { return ' ($' + getHexByte(this.value(inst)) + '),Y'; },
+        value:  function(inst) { return inst.op1; }
+    },
+
+    inx: {
+        size:   2,
+        format: function(inst) { return ' ($' + getHexByte(this.value(inst)) + ',X)'; },
+        value:  function(inst) { return inst.op1; }
+    },
+
+    ind: {
+        size:   3,
+        format: function(inst) { return ' ($' + getHexWord(this.value(inst)) +')'; },
+        value:  function(inst) { return inst.op2 << 8 || inst.op1; }
+    },
+
+    rel: {
+        size:   2,
+        format: function(inst) { return ' $' + getHexWord(this.value(inst)); },
+        value: function(inst) {
+            var opv  = inst.op1;
+            var targ = pc + 2;
+
+            if (opv&128) {
+                targ -= (opv ^ 255) + 1;
+            }
+            else {
+                targ += opv;
+            }
+
+            targ  &= 0xffff;
+            return targ;
+        },
+    },
+}
 
 
 // constructor mods (ie4 fix)
@@ -199,8 +260,24 @@ function disassemble() {
 
     while (pc<stopAddr) {
         inst = disassembleStep(RAM, pc);
-        pc = (pc + inst.step) & 0xffff;
-        list(inst.addr, inst.opcodes, inst.disas);
+        pc = (pc + inst.size()) & 0xffff;
+
+        var d = inst.mnemo() + inst.mode().format(inst);
+        var opcodes;
+
+        switch (inst.size()) {
+            case 1:
+                opcodes = getHexByte(inst.instr) + '      ';
+                break;
+            case 2:
+                opcodes = getHexByte(inst.instr) + ' ' + getHexByte(inst.op1) + '   ';
+                break;
+            case 3:
+                opcodes = getHexByte(inst.instr) + ' ' + getHexByte(inst.op1) + ' ' + getHexByte(inst.op2);
+                break;
+        }
+
+        list(getHexWord(inst.addr), opcodes, d);
     }
 
     list(getHexWord(pc),'','.END');
@@ -211,99 +288,30 @@ function disassemble() {
 }
 
 function disassembleStep(RAM, pc) {
-    var instr;
-    var op1;
-    var op2;
-    var addr;
     var opcodes;
-    var disas;
-    var adm;
-    var step;
+
+    var op1 = null;
+    var op2 = null;
 
     // get instruction and opcodes, inc pc
-    instr = ByteAt(RAM, pc);
-    addr  = getHexWord(pc);
+    var instr = ByteAt(RAM, pc);
 
-    disas = opctab[instr][0];
-    adm   = opctab[instr][1];
-    step  = steptab[adm];
+    var adm   = opctab[instr][1];
+    var step  = addressing_modes[adm].size;
 
-    if (step > 1) op1 = getHexByte(ByteAt(RAM, pc + 1));
-    if (step > 2) op2 = getHexByte(ByteAt(RAM, pc + 2));
-
-    switch (step) {
-        case 1: opcodes = getHexByte(instr) + '      ';              break;
-        case 2: opcodes = getHexByte(instr) + ' ' + op1 + '   ';     break;
-        case 3: opcodes = getHexByte(instr) + ' ' + op1 + ' ' + op2; break;
-    }
-
-    // format and output to listing
-    switch (adm) {
-        case 'imm':
-            disas += ' #$' + op1;
-            break;
-
-        case 'zpg':
-            disas += ' $' + op1;
-            break;
-
-        case 'acc':
-            disas +=' A';
-            break;
-
-        case 'abs':
-            disas += ' $' + op2 + op1;
-            break;
-
-        case 'zpx':
-            disas += ' $' + op1 + ',X';
-            break;
-
-        case 'zpy':
-            disas += ' $' + op1 + ',Y';
-            break;
-
-        case 'abx':
-            disas += ' $' + op2 + op1 + ',X';
-            break;
-
-        case 'aby':
-            disas += ' $' + op2 + op1 + ',Y';
-            break;
-
-        case 'iny':
-            disas += ' ($' +op1 + '),Y';
-            break;
-
-        case 'inx':
-            disas += ' ($' + op1 + ',X)';
-            break;
-
-        case 'rel':
-            var opv  = ByteAt(RAM, pc+1);
-            var targ = pc + 2;
-
-            if (opv&128) {
-                targ -= (opv ^ 255) + 1;
-            }
-            else {
-                targ += opv;
-            }
-
-            targ  &= 0xffff;
-            disas += ' $' + getHexWord(targ);
-            break;
-
-        case 'ind':
-            disas += ' ($' + op2 + op1 +')';
-            break;
-    }
+    if (step > 1) op1 = ByteAt(RAM, pc + 1);
+    if (step > 2) op2 = ByteAt(RAM, pc + 2);
 
     return {
-        'addr':    addr,
-        'opcodes': opcodes,
-        'disas':   disas,
-        'step':    step,
+        addr:  pc,
+        instr: instr,
+        op1:   op1,
+        op2:   op2,
+        adm:   adm,
+
+        mode:  function() { return addressing_modes[this.adm]; },
+        mnemo: function() { return opctab[this.instr][0];      },
+        size:  function() { return this.mode().size;           },
     };
 }
 
