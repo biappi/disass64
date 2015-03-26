@@ -146,17 +146,13 @@ if (!String.prototype.charCodeAt) {
     String.prototype.charCodeAt = _ie4_strchcdat;
 }
 
-// globals
-
-var RAM, pc, startAddr, stopAddr, codeAddr;
-
 // functions
 
 function disassemble() {
     // get addresses
-    codeAddr  = parseInt(document.disass.codeAddr.value,  16);
-    startAddr = parseInt(document.disass.startAddr.value, 16);
-    stopAddr  = parseInt(document.disass.stopAddr.value,  16);
+    var codeAddr  = parseInt(document.disass.codeAddr.value,  16);
+    var startAddr = parseInt(document.disass.startAddr.value, 16);
+    var stopAddr  = parseInt(document.disass.stopAddr.value,  16);
 
     if (isNaN(codeAddr)) {
         alert('Invalid address for code:\n"'+document.disass.codeAddr.value+'" is not a valid hex number!\nDisassembly stopped on error.');
@@ -190,18 +186,22 @@ function disassemble() {
     // load data and set effective stopp address
     window.status='loading data to '+getHexWord(startAddr)+' ...';
 
-    var ad=loadData();
-    if ((stopAddr==0) || (stopAddr<=startAddr)) stopAddr=ad;
+    var RAM = loadData(codeAddr);
     window.status='starting disassembly '+getHexWord(startAddr)+'_'+getHexWord(stopAddr)+' ...';
 
     // disassemble
     pc = startAddress;
     document.disass.listing.value='';
 
-    list('    ','','* = '+getHexWord(startAddr));
+    list('    ', '', '* = ' + getHexWord(startAddr));
+
     pc = startAddr;
-    while (pc<stopAddr)
-        disassembleStep();
+
+    while (pc<stopAddr) {
+        inst = disassembleStep(RAM, pc);
+        pc = (pc + inst.step) & 0xffff;
+        list(inst.addr, inst.ops, inst.disas);
+    }
 
     list(getHexWord(pc),'','.END');
 
@@ -210,7 +210,7 @@ function disassemble() {
     alert('Dissassembly complete.');
 }
 
-function disassembleStep() {
+function disassembleStep(RAM, pc) {
     var instr;
     var op1;
     var op2;
@@ -221,7 +221,7 @@ function disassembleStep() {
     var step;
 
     // get instruction and ops, inc pc
-    instr = ByteAt(pc);
+    instr = ByteAt(RAM, pc);
     addr  = getHexWord(pc);
 
     ops   = getHexByte(instr);
@@ -229,10 +229,8 @@ function disassembleStep() {
     adm   = opctab[instr][1];
     step  = steptab[adm];
 
-    if (step>1) {
-        op1=getHexByte(ByteAt(pc+1));
-        if (step>2) op2=getHexByte(ByteAt(pc+2));
-    }
+    if (step > 1) op1 = getHexByte(ByteAt(RAM, pc + 1));
+    if (step > 2) op2 = getHexByte(ByteAt(RAM, pc + 2));
 
     // format and output to listing
     switch (adm) {
@@ -287,7 +285,7 @@ function disassembleStep() {
             break;
 
         case 'rel':
-            var opv  = ByteAt(pc+1);
+            var opv  = ByteAt(RAM, pc+1);
             var targ = pc + 2;
 
             if (opv&128) {
@@ -311,8 +309,13 @@ function disassembleStep() {
             ops+='      ';
     }
 
-    pc = (pc + step) & 0xffff;
-    list(addr, ops, disas);
+
+    return {
+        'addr':  addr,
+        'ops':   ops,
+        'disas': disas,
+        'step':  step,
+    };
 }
 
 function list(addr, ops, disas) {
@@ -321,8 +324,8 @@ function list(addr, ops, disas) {
     document.disass.listing.value += addr + '   ' + ops + '   ' + disas + '\n';
 }
 
-function loadData() {
-        RAM  = [];
+function loadData(codeAddr) {
+    var RAM  = [];
 
     var addr = codeAddr & 0xffff;
     var data = document.disass.codefield.value;
@@ -363,10 +366,10 @@ function loadData() {
         }
     }
 
-    return addr;
+    return RAM;
 }
 
-function ByteAt(addr) {
+function ByteAt(RAM, addr) {
     return RAM[addr] || 0;
 }
 
