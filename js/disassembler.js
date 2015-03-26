@@ -200,7 +200,7 @@ function disassemble() {
     while (pc<stopAddr) {
         inst = disassembleStep(RAM, pc);
         pc = (pc + inst.step) & 0xffff;
-        list(inst.addr, inst.ops, inst.disas);
+        list(inst.addr, inst.opcodes, inst.disas);
     }
 
     list(getHexWord(pc),'','.END');
@@ -215,16 +215,15 @@ function disassembleStep(RAM, pc) {
     var op1;
     var op2;
     var addr;
-    var ops;
+    var opcodes;
     var disas;
     var adm;
     var step;
 
-    // get instruction and ops, inc pc
+    // get instruction and opcodes, inc pc
     instr = ByteAt(RAM, pc);
     addr  = getHexWord(pc);
 
-    ops   = getHexByte(instr);
     disas = opctab[instr][0];
     adm   = opctab[instr][1];
     step  = steptab[adm];
@@ -232,55 +231,51 @@ function disassembleStep(RAM, pc) {
     if (step > 1) op1 = getHexByte(ByteAt(RAM, pc + 1));
     if (step > 2) op2 = getHexByte(ByteAt(RAM, pc + 2));
 
+    switch (step) {
+        case 1: opcodes = getHexByte(instr) + '      ';              break;
+        case 2: opcodes = getHexByte(instr) + ' ' + op1 + '   ';     break;
+        case 3: opcodes = getHexByte(instr) + ' ' + op1 + ' ' + op2; break;
+    }
+
     // format and output to listing
     switch (adm) {
         case 'imm':
-            ops   += ' ' + op1 + '   ';
             disas += ' #$' + op1;
             break;
 
         case 'zpg':
-            ops   += ' ' + op1 + '   ';
             disas += ' $' + op1;
             break;
 
         case 'acc':
-            ops   += '      ';
             disas +=' A';
             break;
 
         case 'abs':
-            ops   += ' ' + op1 + ' '+op2;
             disas += ' $' + op2 + op1;
             break;
 
         case 'zpx':
-            ops   += ' '  + op1 + '   ';
             disas += ' $' + op1 + ',X';
             break;
 
         case 'zpy':
-            ops   += ' ' + op1 + '   ';
             disas += ' $' + op1 + ',Y';
             break;
 
         case 'abx':
-            ops   += ' ' + op1 + ' ' + op2;
             disas += ' $' + op2 + op1 + ',X';
             break;
 
         case 'aby':
-            ops   += ' ' + op1 + ' ' + op2;
             disas += ' $' + op2 + op1 + ',Y';
             break;
 
         case 'iny':
-            ops   += ' ' + op1 + '   ';
             disas += ' ($' +op1 + '),Y';
             break;
 
         case 'inx':
-            ops   += ' ' + op1 + '   ';
             disas += ' ($' + op1 + ',X)';
             break;
 
@@ -296,25 +291,19 @@ function disassembleStep(RAM, pc) {
             }
 
             targ  &= 0xffff;
-            ops   += ' ' + op1 + '   ';
             disas += ' $' + getHexWord(targ);
             break;
 
         case 'ind':
-            ops   += ' ' + op1 + ' ' + op2;
             disas += ' ($' + op2 + op1 +')';
             break;
-
-        default:
-            ops+='      ';
     }
 
-
     return {
-        'addr':  addr,
-        'ops':   ops,
-        'disas': disas,
-        'step':  step,
+        'addr':    addr,
+        'opcodes': opcodes,
+        'disas':   disas,
+        'step':    step,
     };
 }
 
