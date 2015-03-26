@@ -164,49 +164,6 @@ var addressing_modes = {
     },
 }
 
-
-// constructor mods (ie4 fix)
-
-var IE4_keyref;
-var IE4_keycoderef;
-
-function IE4_makeKeyref() {
-    IE4_keyref= new Array();
-    IE4_keycoderef= new Array();
-    var hex= new Array('A','B','C','D','E','F');
-    for (var i=0; i<=15; i++) {
-        var high=(i<10)? i:hex[i-10];
-        for (var k=0; k<=15; k++) {
-            var low=(k<10)? k:hex[k-10];
-            var cc=i*16+k;
-            if (cc>=32) {
-                var cs=unescape("%"+high+low);
-                IE4_keyref[cc]=cs;
-                IE4_keycoderef[cs]=cc;
-            }
-        }
-    }
-}
-
-function _ie4_strfrchr(cc) {
-    return (cc!=null)? IE4_keyref[cc] : '';
-}
-
-function _ie4_strchcdat(n) {
-    cs=this.charAt(n);
-    return (IE4_keycoderef[cs])? IE4_keycoderef[cs] : 0;
-}
-
-if (!String.fromCharCode) {
-    IE4_makeKeyref();
-    String.fromCharCode = _ie4_strfrchr;
-}
-
-if (!String.prototype.charCodeAt) {
-    if (!IE4_keycoderef) IE4_makeKeyref();
-    String.prototype.charCodeAt = _ie4_strchcdat;
-}
-
 // functions
 
 function disassemble() {
