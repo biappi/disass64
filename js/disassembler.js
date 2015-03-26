@@ -138,11 +138,12 @@ function _ie4_strchcdat(n) {
 
 if (!String.fromCharCode) {
     IE4_makeKeyref();
-    String.fromCharCode=_ie4_strfrchr;
+    String.fromCharCode = _ie4_strfrchr;
 }
+
 if (!String.prototype.charCodeAt) {
     if (!IE4_keycoderef) IE4_makeKeyref();
-    String.prototype.charCodeAt=_ie4_strchcdat;
+    String.prototype.charCodeAt = _ie4_strchcdat;
 }
 
 // globals
@@ -153,25 +154,30 @@ var RAM, pc, startAddr, stopAddr, codeAddr;
 
 function disassemble() {
     // get addresses
-    codeAddr=parseInt(document.disass.codeAddr.value,16);
-    startAddr=parseInt(document.disass.startAddr.value,16);
-    stopAddr=parseInt(document.disass.stopAddr.value,16);
+    codeAddr  = parseInt(document.disass.codeAddr.value,  16);
+    startAddr = parseInt(document.disass.startAddr.value, 16);
+    stopAddr  = parseInt(document.disass.stopAddr.value,  16);
+
     if (isNaN(codeAddr)) {
         alert('Invalid address for code:\n"'+document.disass.codeAddr.value+'" is not a valid hex number!\nDisassembly stopped on error.');
         return;
     }
+
     if (isNaN(startAddr)) {
         alert('Invalid start address:\n"'+document.disass.startAddr.value+'" is not a valid hex number!\nDisassembly stopped on error.');
         return;
     }
+
     if (isNaN(startAddr) ){
         alert('Invalid stop address:\n"'+document.disass.stopAddr.value+'" is not a valid hex number!\nDisassembly stopped on error.');
         return;
     }
-    codeAddr=Math.floor(Math.abs(codeAddr))&0xffff;
-    startAddress=Math.floor(Math.abs(startAddr))&0xffff;
-    stopAddr=Math.floor(Math.abs(stopAddr))&0xffff;
-    if (startAddr<codeAddr) {
+
+    codeAddr     = Math.floor(Math.abs(codeAddr))  & 0xffff;
+    startAddress = Math.floor(Math.abs(startAddr)) & 0xffff;
+    stopAddr     = Math.floor(Math.abs(stopAddr))  & 0xffff;
+
+    if (startAddr < codeAddr) {
         if (confirm('Start address is smaller than code address\nStart disassembly at code addresss ('+getHexWord(codeAddr)+')?')) {
             startAddr=codeAddr;
         }
@@ -180,141 +186,183 @@ function disassemble() {
             return;
         }
     }
+
     // load data and set effective stopp address
     window.status='loading data to '+getHexWord(startAddr)+' ...';
+
     var ad=loadData();
     if ((stopAddr==0) || (stopAddr<=startAddr)) stopAddr=ad;
     window.status='starting disassembly '+getHexWord(startAddr)+'_'+getHexWord(stopAddr)+' ...';
+
     // disassemble
-    pc=startAddress;
+    pc = startAddress;
     document.disass.listing.value='';
+
     list('    ','','* = '+getHexWord(startAddr));
-    pc=startAddr;
-    while (pc<stopAddr) disassembleStep();
+    pc = startAddr;
+    while (pc<stopAddr)
+        disassembleStep();
+
     list(getHexWord(pc),'','.END');
+
     window.status='done.';
+
     alert('Dissassembly complete.');
 }
 
 function disassembleStep() {
-    var instr, op1, op2, addr, ops, disas, adm, step;
+    var instr;
+    var op1;
+    var op2;
+    var addr;
+    var ops;
+    var disas;
+    var adm;
+    var step;
+
     // get instruction and ops, inc pc
-    instr=ByteAt(pc);
-    addr=getHexWord(pc);
-    ops=getHexByte(instr);
-    disas=opctab[instr][0];
-    adm=opctab[instr][1];
-    step=steptab[adm];
+    instr = ByteAt(pc);
+    addr  = getHexWord(pc);
+
+    ops   = getHexByte(instr);
+    disas = opctab[instr][0];
+    adm   = opctab[instr][1];
+    step  = steptab[adm];
+
     if (step>1) {
         op1=getHexByte(ByteAt(pc+1));
         if (step>2) op2=getHexByte(ByteAt(pc+2));
     }
+
     // format and output to listing
     switch (adm) {
-        case 'imm' :
-            ops+=' '+op1+'   ';
-            disas+=' #$'+op1;
+        case 'imm':
+            ops   += ' ' + op1 + '   ';
+            disas += ' #$' + op1;
             break;
-        case 'zpg' :
-            ops+=' '+op1+'   ';
-            disas+=' $'+op1;
+
+        case 'zpg':
+            ops   += ' ' + op1 + '   ';
+            disas += ' $' + op1;
             break;
-        case 'acc' :
-            ops+='      ';
-            disas+=' A';
+
+        case 'acc':
+            ops   += '      ';
+            disas +=' A';
             break;
-        case 'abs' :
-            ops+=' '+op1+' '+op2;
-            disas+=' $'+op2+op1;
+
+        case 'abs':
+            ops   += ' ' + op1 + ' '+op2;
+            disas += ' $' + op2 + op1;
             break;
-        case 'zpx' :
-            ops+=' '+op1+'   ';
-            disas+=' $'+op1+',X';
+
+        case 'zpx':
+            ops   += ' '  + op1 + '   ';
+            disas += ' $' + op1 + ',X';
             break;
-        case 'zpy' :
-            ops+=' '+op1+'   ';
-            disas+=' $'+op1+',Y';
+
+        case 'zpy':
+            ops   += ' ' + op1 + '   ';
+            disas += ' $' + op1 + ',Y';
             break;
-        case 'abx' :
-            ops+=' '+op1+' '+op2;
-            disas+=' $'+op2+op1+',X';
+
+        case 'abx':
+            ops   += ' ' + op1 + ' ' + op2;
+            disas += ' $' + op2 + op1 + ',X';
             break;
-        case 'aby' :
-            ops+=' '+op1+' '+op2;
-            disas+=' $'+op2+op1+',Y';
+
+        case 'aby':
+            ops   += ' ' + op1 + ' ' + op2;
+            disas += ' $' + op2 + op1 + ',Y';
             break;
-        case 'iny' :
-            ops+=' '+op1+'   ';
-            disas+=' ($'+op1+'),Y';
+
+        case 'iny':
+            ops   += ' ' + op1 + '   ';
+            disas += ' ($' +op1 + '),Y';
             break;
-        case 'inx' :
-            ops+=' '+op1+'   ';
-            disas+=' ($'+op1+',X)';
+
+        case 'inx':
+            ops   += ' ' + op1 + '   ';
+            disas += ' ($' + op1 + ',X)';
             break;
-        case 'rel' :
-            var opv=ByteAt(pc+1);
-            var targ=pc+2;
+
+        case 'rel':
+            var opv  = ByteAt(pc+1);
+            var targ = pc + 2;
+
             if (opv&128) {
-                targ-=(opv^255)+1;
+                targ -= (opv ^ 255) + 1;
             }
             else {
-                targ +=opv;
+                targ += opv;
             }
-            targ&=0xffff;
-            ops+=' '+op1+'   ';
-            disas+=' $'+getHexWord(targ);
+
+            targ  &= 0xffff;
+            ops   += ' ' + op1 + '   ';
+            disas += ' $' + getHexWord(targ);
             break;
-        case 'ind' :
-            ops+=' '+op1+' '+op2;
-            disas+=' ($'+op2+op1+')';
+
+        case 'ind':
+            ops   += ' ' + op1 + ' ' + op2;
+            disas += ' ($' + op2 + op1 +')';
             break;
-        default :
+
+        default:
             ops+='      ';
     }
-    pc=(pc+step)&0xffff;
-    list(addr,ops,disas);
+
+    pc = (pc + step) & 0xffff;
+    list(addr, ops, disas);
 }
 
-function list(addr,ops,disas) {
-    if (ops=='') ops='        ';
-    document.disass.listing.value+=addr+'   '+ops+'   '+disas+'\n';
+function list(addr, ops, disas) {
+    if (ops=='')
+        ops='        ';
+    document.disass.listing.value += addr + '   ' + ops + '   ' + disas + '\n';
 }
 
 function loadData() {
-    RAM=[];
-    var addr=codeAddr&0xffff;
-    data=document.disass.codefield.value;
-    var lc='';
-    var ofs=0;
-    var mode=1;
-    data=data.toUpperCase();
-    for (var i=0; i<data.length; i++) {
-        var c=data.charAt(i);
-        if (mode==2) {
-            if ((c=='\r') || (c=='\n')) mode=1;
+        RAM  = [];
+
+    var addr = codeAddr & 0xffff;
+    var data = document.disass.codefield.value;
+    var lc   = '';
+    var ofs  = 0;
+    var mode = 1;
+
+    data = data.toUpperCase();
+
+    for (var i = 0; i < data.length; i++) {
+        var c = data.charAt(i);
+
+        if (mode == 2) {
+            if ((c == '\r') || (c == '\n')) mode = 1;
         }
-        else if (((c>='0') && (c<='9')) || ((c>='A') && (c<='F'))) {
-            if (mode==1) {
+        else if (((c >= '0') && (c <= '9')) || ((c >= 'A') && (c <= 'F'))) {
+            if (mode == 1) {
                 if (lc) {
-                    RAM[addr++]=parseInt(lc+c,16);
-                    if (addr>0xffff) break;
-                    lc='';
+                    RAM[addr++] = parseInt(lc + c, 16);
+                    if (addr>0xffff)
+                        break;
+
+                    lc = '';
                 }
                 else {
-                    lc=c;
+                    lc = c;
                 }
             }
         }
-        else if (c==':') {
-            mode=0;
+        else if (c == ':') {
+            mode = 0;
         }
-        else if (c==';') {
-            mode=2;
+        else if (c == ';') {
+            mode = 2;
         }
         else {
-            mode=1;
+            mode = 1;
         }
     }
+
     return addr;
 }
 
@@ -323,11 +371,11 @@ function ByteAt(addr) {
 }
 
 function getHexByte(v) {
-    return ''+hextab[Math.floor(v/16)]+hextab[v&0x0f];
+    return '' + hextab[Math.floor(v/16)] + hextab[v&0x0f];
 }
 
 function getHexWord(v) {
-    return ''+hextab[Math.floor(v/0x1000)]+hextab[Math.floor((v&0x0f00)/256)]+hextab[Math.floor((v&0xf0)/16)]+hextab[v&0x000f];
+    return '' + hextab[Math.floor(v/0x1000)] + hextab[Math.floor((v&0x0f00)/256)] + hextab[Math.floor((v&0xf0)/16)] + hextab[v&0x000f];
 }
 
 // eof
