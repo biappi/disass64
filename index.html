@@ -9,9 +9,8 @@ input    { font-family: monospace; }
 <script>
 
 document.addEventListener("DOMContentLoaded", function(event) { 
-    var form  = Segment.from_form(0xA000);
-
-    disassemble(form);
+    var basic = Segment.from_file('BASIC Interpreter', 'roms/basic.rom', 0xA000);
+    disassemble(basic);
 });
 
 </script>
@@ -49,6 +48,6 @@ c5 56 45 52 49 46 d9 44 45 c6 50 4f 4b c5 50 52
 <input type="text" name="startAddr" size="6" value='A000'>
 <br>
 
-<input type="text" name="stopAddr"  size="6" value='A0F0'>
+<input type="text" name="stopAddr"  size="6" value='C000'>
 </form>
 

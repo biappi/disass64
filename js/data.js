@@ -8,6 +8,19 @@ Segment.prototype.at = function(addr) {
     return this.mem[addr - this.base];
 }
 
+Segment.from_file = function (name, filename, address) {
+    var request = new XMLHttpRequest();
+    request.responseType = "arraybuffer";
+    request.open('GET', filename, false);
+    request.send(null);
+
+    return new Segment(
+        name,
+        new Uint8Array(request.response),
+        address
+    );
+}
+
 Segment.from_form = function (codeAddr) {
     var RAM  = [];
 
