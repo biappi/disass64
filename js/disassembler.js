@@ -149,7 +149,7 @@ var addressing_modes = {
         format: function(inst) { return ' $' + getHexWord(this.value(inst)); },
         value: function(inst) {
             var opv  = inst.op1;
-            var targ = pc + 2;
+            var targ = inst.pc + 2;
 
             if (opv&128) {
                 targ -= (opv ^ 255) + 1;
