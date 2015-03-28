@@ -244,6 +244,18 @@ function disassemble() {
     alert('Dissassembly complete.');
 }
 
+function Instruction(pc, instr, op1, op2, adm) {
+    this.addr  = pc;
+    this.instr = instr;
+    this.op1   = op1;
+    this.op2   = op2;
+    this.adm   = adm;
+}
+
+Instruction.prototype.mode  = function() { return addressing_modes[this.adm]; };
+Instruction.prototype.mnemo = function() { return opctab[this.instr][0];      };
+Instruction.prototype.size  = function() { return this.mode().size;           };
+
 function disassembleStep(RAM, pc) {
     var opcodes;
 
@@ -259,17 +271,7 @@ function disassembleStep(RAM, pc) {
     if (step > 1) op1 = ByteAt(RAM, pc + 1);
     if (step > 2) op2 = ByteAt(RAM, pc + 2);
 
-    return {
-        addr:  pc,
-        instr: instr,
-        op1:   op1,
-        op2:   op2,
-        adm:   adm,
-
-        mode:  function() { return addressing_modes[this.adm]; },
-        mnemo: function() { return opctab[this.instr][0];      },
-        size:  function() { return this.mode().size;           },
-    };
+    return new Instruction(pc, instr, op1, op2, adm);
 }
 
 function list(addr, ops, disas) {
