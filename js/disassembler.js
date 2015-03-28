@@ -167,54 +167,15 @@ var addressing_modes = {
 // functions
 
 function disassemble(RAM) {
-    // get addresses
-    var codeAddr  = parseInt(document.disass.codeAddr.value,  16);
-    var startAddr = parseInt(document.disass.startAddr.value, 16);
-    var stopAddr  = parseInt(document.disass.stopAddr.value,  16);
-
-    if (isNaN(codeAddr)) {
-        alert('Invalid address for code:\n"'+document.disass.codeAddr.value+'" is not a valid hex number!\nDisassembly stopped on error.');
-        return;
-    }
-
-    if (isNaN(startAddr)) {
-        alert('Invalid start address:\n"'+document.disass.startAddr.value+'" is not a valid hex number!\nDisassembly stopped on error.');
-        return;
-    }
-
-    if (isNaN(startAddr) ){
-        alert('Invalid stop address:\n"'+document.disass.stopAddr.value+'" is not a valid hex number!\nDisassembly stopped on error.');
-        return;
-    }
-
-    codeAddr     = Math.floor(Math.abs(codeAddr))  & 0xffff;
-    startAddress = Math.floor(Math.abs(startAddr)) & 0xffff;
-    stopAddr     = Math.floor(Math.abs(stopAddr))  & 0xffff;
-
-    if (startAddr < codeAddr) {
-        if (confirm('Start address is smaller than code address\nStart disassembly at code addresss ('+getHexWord(codeAddr)+')?')) {
-            startAddr=codeAddr;
-        }
-        else {
-            alert('Disassembly stopped.\nPlease set addresses to proper values.');
-            return;
-        }
-    }
-
-    // load data and set effective stopp address
-    window.status='loading data to '+getHexWord(startAddr)+' ...';
-
-    window.status='starting disassembly '+getHexWord(startAddr)+'_'+getHexWord(stopAddr)+' ...';
-
     // disassemble
-    pc = startAddress;
     document.disass.listing.value='';
 
-    list('    ', '', '* = ' + getHexWord(startAddr));
+    list('    ', '', '* = ' + getHexWord(RAM.base));
 
-    pc = startAddr;
+    var pc  = RAM.base;
+    var end = RAM.base + RAM.size();
 
-    while (pc<stopAddr) {
+    while (pc < end) {
         inst = disassembleStep(RAM, pc);
         pc = (pc + inst.size()) & 0xffff;
 
