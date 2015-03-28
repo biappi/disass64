@@ -74,79 +74,79 @@ var opctab= [
 var addressing_modes = {
     imp: {
         size:   1,
-        format: function(inst) { return ''; },
+        format: '',
         value:  function(inst) { return null; },
     },
 
     imm: {
         size:   2,
-        format: function(inst) { return ' #$' + getHexByte(this.value(inst)); },
+        format: ' #$%02X',
         value:  function(inst) { return inst.op1; },
     },
 
     zpg: {
         size:   2,
-        format: function(inst) { return ' $' + getHexByte(this.value(inst)); },
+        format: ' $%02X',
         value:  function(inst) { return inst.op1; },
     },
 
     acc: {
         size:   1,
-        format: function(inst) { return' A'; },
+        format: ' A',
         value:  function(inst) { return null; },
     },
 
     abs: {
         size:   3,
-        format: function(inst) { return ' $' + getHexWord(this.value(inst)); },
-        value:  function(inst) { return inst.op2 << 8 || inst.op1; }
+        format: ' $%04X',
+        value:  function(inst) { return inst.op2 << 8 || inst.op1; },
     },
 
     zpx: {
         size:   2,
-        format: function(inst) { return ' $' + getHexByte(this.value(inst)) + ',X'; },
+        format: ' $%02X, X',
         value:  function(inst) { return inst.op1; }
     },
 
     zpy: {
         size:   2,
-        format: function(inst) { return ' $' + getHexWord(this.value(inst)) + ',Y'; },
+        format: ' $%04X, Y',
         value:  function(inst) { return inst.op1; }
     },
 
     abx: {
         size:   3,
-        format: function(inst) { return ' $' + getHexWord(this.value(inst)) + ',X'; },
+        format: ' $%04X, X',
         value:  function(inst) { return inst.op2 << 8 || inst.op1; }
     },
 
     aby: {
         size:   3,
-        format: function(inst) { return ' $' + getHexWord(this.value(inst)) + ',Y'; },
+        format: ' $%04X, Y',
         value:  function(inst) { return inst.op2 << 8 || inst.op1; }
     },
 
     iny: {
         size:   2,
-        format: function(inst) { return ' ($' + getHexByte(this.value(inst)) + '),Y'; },
+        format: ' ($%04X), Y',
         value:  function(inst) { return inst.op1; }
     },
 
     inx: {
         size:   2,
-        format: function(inst) { return ' ($' + getHexByte(this.value(inst)) + ',X)'; },
+        format: ' ($%04X), Y',
         value:  function(inst) { return inst.op1; }
     },
 
     ind: {
         size:   3,
-        format: function(inst) { return ' ($' + getHexWord(this.value(inst)) +')'; },
+        format: ' ($%04X)',
         value:  function(inst) { return inst.op2 << 8 || inst.op1; }
     },
 
     rel: {
         size:   2,
-        format: function(inst) { return ' $' + getHexWord(this.value(inst)); },
+        format: ' $%04X',
         value: function(inst) {
             var opv  = inst.op1;
             var targ = inst.pc + 2;
@@ -168,9 +168,7 @@ var addressing_modes = {
 
 function disassemble(RAM) {
     // disassemble
-    document.disass.listing.value='';
-
-    list('    ', '', '* = ' + getHexWord(RAM.base));
+    var text = list('    ', '', '* = ' + getHexWord(RAM.base));
 
     var pc  = RAM.base;
     var end = RAM.base + RAM.size();
@@ -179,7 +177,9 @@ function disassemble(RAM) {
         inst = disassembleStep(RAM, pc);
         pc = (pc + inst.size()) & 0xffff;
 
-        var d = inst.mnemo() + inst.mode().format(inst);
+
+        var ops = sprintf(inst.mode().format, inst.mode().value(inst));
+        var d = inst.mnemo() + ops
         var opcodes;
 
         switch (inst.size()) {
@@ -194,14 +194,12 @@ function disassemble(RAM) {
                 break;
         }
 
-        list(getHexWord(inst.addr), opcodes, d);
+        text += list(getHexWord(inst.addr), opcodes, d);
     }
 
-    list(getHexWord(pc),'','.END');
+    text += list(getHexWord(pc),'','.END');
 
-    window.status='done.';
-
-    alert('Dissassembly complete.');
+    return text;
 }
 
 function Instruction(pc, instr, op1, op2, adm) {
@@ -237,7 +235,7 @@ function disassembleStep(RAM, pc) {
 function list(addr, ops, disas) {
     if (ops=='')
         ops='        ';
-    document.disass.listing.value += addr + '   ' + ops + '   ' + disas + '\n';
+    return addr + '   ' + ops + '   ' + disas + '\n';
 }
 
 function getHexByte(v) {

@@ -3,44 +3,19 @@ textarea { font-family: monospace; }
 input    { font-family: monospace; }
 </style>
 
+<script src="js/sprintf.js"> </script>
 <script src="js/disassembler.js"> </script>
 <script src="js/data.js"> </script>
 
 <script>
 
 document.addEventListener("DOMContentLoaded", function(event) { 
-    var basic = Segment.from_file('BASIC Interpreter', 'roms/basic.rom', 0xA000);
-    disassemble(basic);
+    var basic  = Segment.from_file('BASIC Interpreter', 'roms/basic.rom', 0xA000);
+    var disass = disassemble(basic);
+    document.getElementById('disass').innerHTML = disass;
 });
 
 </script>
 
-<form name="disass">
-
-<textarea name="codefield" class="formField" rows="20" cols="50" readonly>
-94 e3 7b e3 43 42 4d 42 41 53 49 43 30 a8 41 a7
-1d ad f7 a8 a4 ab be ab 80 b0 05 ac a4 a9 9f a8
-70 a8 27 a9 1c a8 82 a8 d1 a8 3a a9 2e a8 4a a9
-2c b8 67 e1 55 e1 64 e1 b2 b3 23 b8 7f aa 9f aa
-56 a8 9b a6 5d a6 85 aa 29 e1 bd e1 c6 e1 7a ab
-41 a6 39 bc cc bc 58 bc 10 03 7d b3 9e b3 71 bf
-97 e0 ea b9 ed bf 64 e2 6b e2 b4 e2 0e e3 0d b8
-7c b7 65 b4 ad b7 8b b7 ec b6 00 b7 2c b7 37 b7
-79 69 b8 79 52 b8 7b 2a ba 7b 11 bb 7f 7a bf 50
-e8 af 46 e5 af 7d b3 bf 5a d3 ae 64 15 b0 45 4e
-c4 46 4f d2 4e 45 58 d4 44 41 54 c1 49 4e 50 55
-54 a3 49 4e 50 55 d4 44 49 cd 52 45 41 c4 4c 45
-d4 47 4f 54 cf 52 55 ce 49 c6 52 45 53 54 4f 52
-c5 47 4f 53 55 c2 52 45 54 55 52 ce 52 45 cd 53
-54 4f d0 4f ce 57 41 49 d4 4c 4f 41 c4 53 41 56
-c5 56 45 52 49 46 d9 44 45 c6 50 4f 4b c5 50 52
-49 4e 54 a3 50 52 49 4e d4 43 4f 4e d4 4c 49 53
-</textarea>
-<br>
-
-<textarea name="listing"   class="formField" rows="20" cols="50" readonly>
-</textarea>
-<br>
-
-</form>
-
+<pre id="disass">
+</pre>
