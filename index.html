@@ -3,12 +3,15 @@ textarea { font-family: monospace; }
 input    { font-family: monospace; }
 </style>
 
-<script src="js/disassembler.js">
-</script>
+<script src="js/disassembler.js"> </script>
+<script src="js/data.js"> </script>
 
 <script>
+
 document.addEventListener("DOMContentLoaded", function(event) { 
-    disassemble();
+    var form  = Segment.from_form(0xA000);
+
+    disassemble(form);
 });
 
 </script>

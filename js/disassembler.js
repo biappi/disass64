@@ -166,7 +166,7 @@ var addressing_modes = {
 
 // functions
 
-function disassemble() {
+function disassemble(RAM) {
     // get addresses
     var codeAddr  = parseInt(document.disass.codeAddr.value,  16);
     var startAddr = parseInt(document.disass.startAddr.value, 16);
@@ -204,7 +204,6 @@ function disassemble() {
     // load data and set effective stopp address
     window.status='loading data to '+getHexWord(startAddr)+' ...';
 
-    var RAM = loadData(codeAddr);
     window.status='starting disassembly '+getHexWord(startAddr)+'_'+getHexWord(stopAddr)+' ...';
 
     // disassemble
@@ -263,13 +262,13 @@ function disassembleStep(RAM, pc) {
     var op2 = null;
 
     // get instruction and opcodes, inc pc
-    var instr = ByteAt(RAM, pc);
+    var instr = RAM.at(pc);
 
     var adm   = opctab[instr][1];
     var step  = addressing_modes[adm].size;
 
-    if (step > 1) op1 = ByteAt(RAM, pc + 1);
-    if (step > 2) op2 = ByteAt(RAM, pc + 2);
+    if (step > 1) op1 = RAM.at(pc + 1);
+    if (step > 2) op2 = RAM.at(pc + 2);
 
     return new Instruction(pc, instr, op1, op2, adm);
 }
@@ -278,55 +277,6 @@ function list(addr, ops, disas) {
     if (ops=='')
         ops='        ';
     document.disass.listing.value += addr + '   ' + ops + '   ' + disas + '\n';
-}
-
-function loadData(codeAddr) {
-    var RAM  = [];
-
-    var addr = codeAddr & 0xffff;
-    var data = document.disass.codefield.value;
-    var lc   = '';
-    var ofs  = 0;
-    var mode = 1;
-
-    data = data.toUpperCase();
-
-    for (var i = 0; i < data.length; i++) {
-        var c = data.charAt(i);
-
-        if (mode == 2) {
-            if ((c == '\r') || (c == '\n')) mode = 1;
-        }
-        else if (((c >= '0') && (c <= '9')) || ((c >= 'A') && (c <= 'F'))) {
-            if (mode == 1) {
-                if (lc) {
-                    RAM[addr++] = parseInt(lc + c, 16);
-                    if (addr>0xffff)
-                        break;
-
-                    lc = '';
-                }
-                else {
-                    lc = c;
-                }
-            }
-        }
-        else if (c == ':') {
-            mode = 0;
-        }
-        else if (c == ';') {
-            mode = 2;
-        }
-        else {
-            mode = 1;
-        }
-    }
-
-    return RAM;
-}
-
-function ByteAt(RAM, addr) {
-    return RAM[addr] || 0;
 }
 
 function getHexByte(v) {
