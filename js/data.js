@@ -35,7 +35,7 @@ function LineUint8(line, addr, rom) {
 }
 
 LineUint8.prototype.to_html = function() {
-    return sprintf("%02X (%s)\n", this.val, String.fromCharCode(this.val));
+    return sprintf("%02X (%s)", this.val, String.fromCharCode(this.val));
 }
 
 function LineUint16(line, addr, rom) {
@@ -46,8 +46,25 @@ function LineUint16(line, addr, rom) {
 }
 
 LineUint16.prototype.to_html = function() {
-    return sprintf("%04X\n", this.val);
+    return sprintf("%04X", this.val);
 }
+
+
+function LineString(line, addr, rom, size) {
+    this.line = line;
+    this.addr = addr;
+    this.size = size;
+    this.val  = '';
+
+    for (var i = 0; i < size; i++)
+        this.val += String.fromCharCode(rom.at(this.addr + i));
+}
+
+LineString.prototype.to_html = function() {
+    return this.val;
+}
+
+// ------ //
 
 var fanculo;
 
@@ -129,6 +146,22 @@ Lines.prototype.to_uint16 = function(linenr) {
     this.fix_lines(linenr, newline)
 }
 
+Lines.prototype.to_string = function(linenr) {
+    var oldline = this.lines[linenr];
+    if (oldline instanceof LineString)
+        return;
+
+    if (this.lines[linenr - 1] instanceof LineString) {
+        var oldstring = this.lines[linenr - 1];
+        var newstring = new LineString(linenr - 1, oldstring.addr, this.rom, oldstring.size + 1);
+        this.fix_lines(linenr - 1, newstring);
+    }
+    else {
+        var newline = new LineString(linenr, oldline.addr, this.rom, 1);
+        this.fix_lines(linenr, newline)
+    }
+}
+
 var conversions = [
     {
         name: 'uint8',
@@ -138,6 +171,10 @@ var conversions = [
         name: 'uint16',
         doit: function(lines, linenr) { lines.to_uint16(linenr); },
     },
+    {
+        name: 'string',
+        doit: function(lines, linenr) { lines.to_string(linenr); },
+    }
 ];
 
 function render_line(line) {
@@ -147,7 +184,7 @@ function render_line(line) {
     for (var c in conversions) 
         all += "<option value='" + c + "'>" + conversions[c].name + "</option>";
 
-    all += '</select>  -  ' + line.to_html();
+    all += '</select>  -  ' + line.to_html() + '\n';
 
     return all;
 }
