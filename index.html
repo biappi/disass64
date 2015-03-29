@@ -10,9 +10,8 @@ input    { font-family: monospace; }
 <script>
 
 document.addEventListener("DOMContentLoaded", function(event) { 
-    var basic  = Segment.from_file('BASIC Interpreter', 'roms/basic.rom', 0xA000);
-    var disass = disassemble(basic);
-    document.getElementById('disass').innerHTML = disass;
+    var basic = Segment.from_file('BASIC Interpreter', 'roms/basic.rom', 0xA000);
+    var lines = new Lines(basic, document.getElementById('disass'));
 });
 
 </script>
