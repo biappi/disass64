@@ -4,6 +4,7 @@ input    { font-family: monospace; }
 </style>
 
 <script src="js/sprintf.js"> </script>
+<script src="js/filesaver.js"> </script>
 <script src="js/disassembler.js"> </script>
 <script src="js/data.js"> </script>
 
@@ -15,6 +16,8 @@ document.addEventListener("DOMContentLoaded", function(event) {
 });
 
 </script>
+
+<input type="button" onclick="javascript:save()" value="save">
 
 <pre id="disass">
 </pre>

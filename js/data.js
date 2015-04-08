@@ -27,49 +27,64 @@ Segment.from_file = function (name, filename, address) {
 
 // ------- //
 
-function LineUint8(line, addr, rom) {
-    this.line = line;
-    this.addr = addr;
-    this.size = 1;
-    this.val  = rom.at(addr);
-}
+var linetypes = {
+    uint8: {
+        create: function(line, addr, rom) {
+            return {
+                type: 'uint8',
+                line: line,
+                addr: addr,
+                size: 1,
+                val:  rom.at(addr),
+            };
+        },
+        to_html: function(thing) {
+            return sprintf("%02X (%s)", thing.val, String.fromCharCode(thing.val));
+        }
+    },
 
-LineUint8.prototype.to_html = function() {
-    return sprintf("%02X (%s)", this.val, String.fromCharCode(this.val));
-}
+    uint16: {
+        create: function(line, addr, rom) {
+            return {
+                type: 'uint16',
+                line: line,
+                addr: addr,
+                size: 2,
+                val:  rom.at(addr) + (rom.at(addr + 1) << 8),
+            }
+        },
+        to_html: function(thing) {
+            return sprintf("%04X", thing.val);
+        },
+    },
 
-function LineUint16(line, addr, rom) {
-    this.line = line;
-    this.addr = addr;
-    this.size = 2;
-    this.val  = rom.at(addr) + (rom.at(addr + 1) << 8);
-}
+    string: {
+        create: function(line, addr, rom, size) {
+            var val = ''
+            for (var i = 0; i < size; i++)
+                val += String.fromCharCode(rom.at(addr + i));
 
-LineUint16.prototype.to_html = function() {
-    return sprintf("%04X", this.val);
-}
+            return {
+                type: 'string',
+                line: line,
+                addr: addr,
+                size: size,
+                val:  val,
+            }
+        },
+        to_html: function(thing) {
+            return thing.val;
+        },
+    },
 
-
-function LineString(line, addr, rom, size) {
-    this.line = line;
-    this.addr = addr;
-    this.size = size;
-    this.val  = '';
-
-    for (var i = 0; i < size; i++)
-        this.val += String.fromCharCode(rom.at(this.addr + i));
-}
-
-LineString.prototype.to_html = function() {
-    return this.val;
-}
+};
 
 // ------ //
 
 var fanculo;
 
 function changeline(line, select) {
-    conversions[select.value].doit(fanculo, line);
+    fanculo.convert(line, select.value);
 }
 
 function Lines(rom, element) {
@@ -80,7 +95,7 @@ function Lines(rom, element) {
     this.element = element;
 
     for (var i = 0; i < rom.size(); i++) {
-        this.lines.push(new LineUint8(
+        this.lines.push(linetypes.uint8.create(
             i,
             rom.base + i,
             rom
@@ -121,70 +136,59 @@ Lines.prototype.fix_lines = function(linenr, newline) {
 
     var padding_addr_start = newline.addr + newline.size;
     for (var i = 0; i < padding; i++) {
-        spliceparams.push(new LineUint8(linenr + i + 1, padding_addr_start + i, this.rom));
+        spliceparams.push(linetypes.uint8.create(linenr + i + 1, padding_addr_start + i, this.rom));
     }
 
     Array.prototype.splice.apply(this.lines, spliceparams);
     this.render();
 }
 
-Lines.prototype.to_uint8 = function(linenr) {
+Lines.prototype.convert = function(linenr, newtype) {
     var line = this.lines[linenr];
-    if (line instanceof LineUint8)
+    if (line.type == newtype)
         return;
 
-    var newline = new LineUint8(linenr, line.addr, this.rom);
-    this.fix_lines(linenr, newline)
-}
-
-Lines.prototype.to_uint16 = function(linenr) {
-    var oldline = this.lines[linenr];
-    if (oldline instanceof LineUint16)
+    if (newtype == 'string') {
+        this.to_string(linenr);
         return;
+    }
 
-    var newline = new LineUint16(linenr, oldline.addr, this.rom);
-    this.fix_lines(linenr, newline)
+    var newline = linetypes[newtype].create(linenr, line.addr, this.rom);
+    this.fix_lines(linenr, newline);
 }
 
 Lines.prototype.to_string = function(linenr) {
     var oldline = this.lines[linenr];
-    if (oldline instanceof LineString)
-        return;
 
-    if (this.lines[linenr - 1] instanceof LineString) {
+    if (this.lines[linenr - 1].type == 'string') {
         var oldstring = this.lines[linenr - 1];
-        var newstring = new LineString(linenr - 1, oldstring.addr, this.rom, oldstring.size + 1);
+        var newstring = linetypes.string.create(linenr - 1, oldstring.addr, this.rom, oldstring.size + 1);
         this.fix_lines(linenr - 1, newstring);
     }
     else {
-        var newline = new LineString(linenr, oldline.addr, this.rom, 1);
+        var newline = linetypes.string.create(linenr, oldline.addr, this.rom, 1);
         this.fix_lines(linenr, newline)
     }
 }
-
-var conversions = [
-    {
-        name: 'uint8',
-        doit: function(lines, linenr) { lines.to_uint8(linenr); },
-    },
-    {
-        name: 'uint16',
-        doit: function(lines, linenr) { lines.to_uint16(linenr); },
-    },
-    {
-        name: 'string',
-        doit: function(lines, linenr) { lines.to_string(linenr); },
-    }
-];
 
 function render_line(line) {
     all = sprintf("%04X  -  ", line.addr);
     all += '<select onchange="javascript:changeline(' + line.line + ', this)"><option></option>';
 
-    for (var c in conversions) 
-        all += "<option value='" + c + "'>" + conversions[c].name + "</option>";
+    var conversions = Object.keys(linetypes);
+    conversions.sort();
 
-    all += '</select>  -  ' + line.to_html() + '\n';
+    for (var c in conversions) 
+        all += "<option>" + conversions[c] + "</option>";
+
+    all += '</select>  -  ' + linetypes[line.type].to_html(line) + '\n';
 
     return all;
+}
+
+function save() {
+    var content = JSON.stringify(fanculo.lines);
+
+    var blob = new Blob([content], {type: "application/octet-stream"});
+    saveAs(blob, "hello world.txt");
 }
