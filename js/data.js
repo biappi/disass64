@@ -102,7 +102,25 @@ function Lines(rom, element) {
         ));
     }
 
+    this.load();
     this.render();
+}
+
+Lines.prototype.load = function() {
+    var xmlhttp = new XMLHttpRequest();
+
+    var the_this = this;
+
+    xmlhttp.onreadystatechange=function() {
+        if (xmlhttp.readyState == 4) {
+            var json = xmlhttp.responseText;
+            the_this.lines = JSON.parse(json);
+            the_this.render();
+        }
+    }
+
+    xmlhttp.open("GET", "data.json", true);
+    xmlhttp.send();
 }
 
 Lines.prototype.render = function() {
