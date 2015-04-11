@@ -114,6 +114,9 @@ Lines.prototype.render = function() {
     }
 
     this.element.innerHTML = str;
+
+    var content = JSON.stringify(this.lines);
+    document.getElementById('json').value = content;
 }
 
 Lines.prototype.fix_lines = function(linenr, newline) {
@@ -184,11 +187,4 @@ function render_line(line) {
     all += '</select>  -  ' + linetypes[line.type].to_html(line) + '\n';
 
     return all;
-}
-
-function save() {
-    var content = JSON.stringify(fanculo.lines);
-
-    var blob = new Blob([content], {type: "application/octet-stream"});
-    saveAs(blob, "hello world.txt");
 }
