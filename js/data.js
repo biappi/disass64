@@ -124,14 +124,14 @@ Lines.prototype.load = function() {
 }
 
 Lines.prototype.render = function() {
-    var str = '';
+    var str = [];
     for (var i in this.lines) {
         var line = this.lines[i];
         line.line = i;
-        str += render_line(line);
+        str.push(render_line(line));
     }
 
-    this.element.innerHTML = str;
+    this.element.innerHTML = str.join('');
 
     var content = JSON.stringify(this.lines);
     document.getElementById('json').value = content;
@@ -192,15 +192,18 @@ Lines.prototype.to_string = function(linenr) {
     }
 }
 
+__conversions = Object.keys(linetypes);
+__conversions.sort();
+
 function render_line(line) {
     all = sprintf("%04X  -  ", line.addr);
     all += '<select onchange="javascript:changeline(' + line.line + ', this)"><option></option>';
 
-    var conversions = Object.keys(linetypes);
-    conversions.sort();
+    if (!__conversions) {
+    }
 
-    for (var c in conversions) 
-        all += "<option>" + conversions[c] + "</option>";
+    for (var c in __conversions) 
+        all += "<option>" + __conversions[c] + "</option>";
 
     all += '</select>  -  ' + linetypes[line.type].to_html(line) + '\n';
 
