@@ -2,6 +2,10 @@
 
 body { font-family: monospace; }
 
+#disass > table {
+    border-spacing: 0px;
+}
+
 #disass > table td {
     padding-left:  10;
     padding-right: 10;
@@ -9,6 +13,40 @@ body { font-family: monospace; }
 
 .label {
     text-align: right;
+}
+
+.edit {
+    visibility:hidden;
+}
+
+#disass > table tr:hover .conversions .edit {
+    visibility: visible;
+}
+
+#disass > table tr:hover {
+    background: #ddd;
+}
+
+.conversions {
+    position: relative;
+}
+
+.conversions:hover .convmenu {
+    display: block;
+    z-index: 10;
+}
+
+.conversions .convmenu  {
+    position: absolute;
+    display: none;
+    z-index: 0;
+}
+
+.convmenu a {
+    display: block;
+    width: 100px;
+    height: 30px;
+    background: #aaa;
 }
 
 </style>

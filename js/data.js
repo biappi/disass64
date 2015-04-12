@@ -381,9 +381,10 @@ function render_lineitem(line_item, lines) {
 
 __conversions = Object.keys(linetypes);
 __conversions.sort();
-__conversions_options = '';
+__conversions_options = '<div class="convmenu">';
 for (var c in __conversions)
-    __conversions_options += "<a href='#' class='cb_" + __conversions[c] + "'>" + __conversions[c] + "</a> ";
+    __conversions_options += "<a href='#' class='cb_" + __conversions[c] + "'>" + __conversions[c] + "</a>";
+__conversions_options += '</div>';
 
 function render_line(line, names) {
     var label = sprintf(
@@ -398,14 +399,15 @@ function render_line(line, names) {
     );
 
     return [
+        '<td class="conversions">',
+        '<span class="edit">edit</span>',
+        __conversions_options,
+        '</td>',
         '<td class="label">',
         label,
         '</td>',
         '<td class="addr">',
          addr,
-        '</td>',
-        '<td class="conversions">',
-        __conversions_options,
         '</td>',
         '<td class="line">',
         linetypes[line.type].to_html(line),
