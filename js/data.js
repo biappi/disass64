@@ -355,7 +355,7 @@ Lines.prototype.save = function() {
         names: this.names.save(),
     };
 
-    return JSON.stringify(json);
+    return JSON.stringify(json, null, 2);
 }
 
 Lines.prototype.render = function() {
