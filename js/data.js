@@ -201,6 +201,15 @@ Names.prototype.set = function(name, address) {
         delete this.addresses_to_names[address];
         delete this.names_to_addresses[name];
     }
+
+    var eles = document.getElementsByClassName(sprintf('ad_%04x', address));
+    for (var i = 0; i < eles.length; i++) {
+        var name;
+        name = this.addresses_to_names[address];
+        name = name || sprintf('%04X', address);
+
+        eles[i].innerHTML = name;
+    }
 }
 
 Names.prototype.save = function() {
@@ -216,8 +225,10 @@ Names.prototype.load = function(j) {
 }
 
 Names.prototype.for_display = function(addr) {
-    var name = this.addresses_to_names[addr];
-    return name || sprintf('%04X', addr);
+    var name;
+    name = this.addresses_to_names[addr];
+    name = name || sprintf('%04X', addr);
+    return sprintf("<span class='ad_%04x'>%s</span>", addr, name);
 }
 
 Names.prototype.name = function(addr) {
@@ -385,12 +396,6 @@ function render_lineitem(line_item, lines) {
             return false;
 
         lines.names.set(name, line_item.item.addr);
-
-        var eles = document.getElementsByClassName(sprintf('ad_%04x', line_item.item.addr));
-        for (var i = 0; i < eles.length; i++) {
-            eles[i].innerHTML = lines.names.for_display(line_item.item.addr);
-        }
-
         return false;
     };
 
