@@ -210,6 +210,15 @@ Names.prototype.set = function(name, address) {
 
         eles[i].innerHTML = name;
     }
+
+    var eles = document.getElementsByClassName(sprintf('lbl_%04x', address));
+    for (var i = 0; i < eles.length; i++) {
+        var name;
+        name = this.addresses_to_names[address];
+        name = name || '';
+
+        eles[i].innerHTML = name;
+    }
 }
 
 Names.prototype.save = function() {
@@ -231,7 +240,7 @@ Names.prototype.for_display = function(addr) {
     return sprintf("<span class='ad_%04x'>%s</span>", addr, name);
 }
 
-Names.prototype.name = function(addr) {
+Names.prototype.label = function(addr) {
     var name = this.addresses_to_names[addr];
     return name || '';
 }
@@ -391,9 +400,10 @@ function render_lineitem(line_item, lines) {
 
     var cb_names = element.getElementsByClassName('cb_name');
     var cb_names_onclick = function() {
-        var name = prompt(sprintf('Name for address %04X', line_item.item.addr));
-        if (name == null)
-            return false;
+        var name = prompt(
+            sprintf('Name for address %04X', line_item.item.addr),
+            lines.names.label(line_item.item.addr)
+        );
 
         lines.names.set(name, line_item.item.addr);
         return false;
@@ -426,9 +436,9 @@ __conversions.sort();
 
 function render_line(line, names) {
     var label = sprintf(
-        "<a href='#' class='cb_name ad_%04x'>%s</a> ",
+        "<a href='#' class='cb_name lbl_%04x'>%s</a> ",
         line.addr,
-        names.name(line.addr)
+        names.label(line.addr)
     );
 
     var addr = sprintf(
