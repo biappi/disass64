@@ -79,6 +79,16 @@ var linetypes = {
 
 };
 
+function line_as_dict(line) {
+    return {
+        type: line.type,
+        line: line.line,
+        addr: line.addr,
+        size: line.size,
+        val:  line.val,
+    };
+}
+
 // ------ //
 
 function ListItem(item, prev, next) {
@@ -195,6 +205,18 @@ Lines.prototype.load = function() {
     xmlhttp.send();
 }
 
+Lines.prototype.save = function() {
+    var json = [];
+    list_foreach(
+        this.lines_list,
+        function (line_item) {
+            json.push(line_as_dict(line_item.item));
+        }
+    );
+
+    return JSON.stringify(json);
+}
+
 Lines.prototype.render = function() {
     var str = [];
     
@@ -211,8 +233,6 @@ Lines.prototype.render = function() {
         }
     );
 
-    //var content = JSON.stringify(this.lines);
-    //document.getElementById('json').value = content;
 }
 
 Lines.prototype.fix_lines = function(line_item, newline) {
