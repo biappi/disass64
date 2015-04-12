@@ -361,6 +361,7 @@ Lines.prototype.convert = function(line_item, newtype) {
 function create_onclick(lines, lineitem, newtype) {
     return function() {
         lines.convert(lineitem, newtype);
+        return false;
     };
 }
 
@@ -369,6 +370,7 @@ function create_extra(lines, lineitem, extra) {
         var line     = lineitem.item;
         var new_line = linetypes[line.type].extras[extra](line, lines.rom);
         lines.fix_lines(lineitem, new_line);
+        return false;
     }
 }
 
@@ -380,7 +382,7 @@ function render_lineitem(line_item, lines) {
     var cb_names_onclick = function() {
         var name = prompt(sprintf('Name for address %04X', line_item.item.addr));
         if (name == null)
-            return;
+            return false;
 
         lines.names.set(name, line_item.item.addr);
 
@@ -388,6 +390,8 @@ function render_lineitem(line_item, lines) {
         for (var i = 0; i < eles.length; i++) {
             eles[i].innerHTML = lines.names.for_display(line_item.item.addr);
         }
+
+        return false;
     };
 
     for (var i = 0; i < cb_names.length; i++) {
