@@ -147,6 +147,41 @@ function list_delete(list) {
 
 // ------ //
 
+function Names() {
+    this.addresses_to_names = {};
+    this.names_to_addresses = {};
+}
+
+Names.prototype.set = function(name, address) {
+    if (name) {
+        this.addresses_to_names[address] = name;
+        this.names_to_addresses[name]    = address;
+    }
+    else {
+        delete this.addresses_to_names[address];
+        delete this.names_to_addresses[name];
+    }
+}
+
+Names.prototype.save = function() {
+    return {
+        a2n: this.addresses_to_names,
+        n2a: this.names_to_addresses,
+    };
+}
+
+Names.prototype.load = function(j) {
+    this.addresses_to_names = j.a2n;
+    this.names_to_addresses = j.n2a;
+}
+
+Names.prototype.for_display = function(addr) {
+    var name = this.addresses_to_names[addr];
+    return name || sprintf('%04X', addr);
+}
+
+// ------ //
+
 var fanculo;
 
 function changeline(line, select) {
@@ -156,14 +191,14 @@ function changeline(line, select) {
 function Lines(rom, element) {
     fanculo = this;
 
-    this.rom     = rom;
-    this.element = element;
+    this.rom        = rom;
+    this.lines_list = null;
+    this.names      = new Names();
+    this.element    = element;
 
     element.appendChild(document.createElement('div'));
 
-    this.lines_list = null;
-
-    var iterator   = null;
+    var iterator    = null;
     for (var i = 0; i < rom.size(); i++) {
         var line = linetypes.uint8.create(
             i,
@@ -187,7 +222,8 @@ Lines.prototype.load = function() {
     xmlhttp.onreadystatechange=function() {
         if (xmlhttp.readyState == 4) {
             var json  = xmlhttp.responseText;
-            var lines = JSON.parse(json);
+            var saved = JSON.parse(json);
+            var lines = saved.lines;
             var it    = null;
 
             the_this.lines_list = null;
@@ -196,6 +232,8 @@ Lines.prototype.load = function() {
                 it = list_append(it, lines[i]);
                 if (!the_this.lines_list) the_this.lines_list = it;
             }
+
+            the_this.names.load(saved.names);
 
             the_this.render();
         }
@@ -206,13 +244,18 @@ Lines.prototype.load = function() {
 }
 
 Lines.prototype.save = function() {
-    var json = [];
+    var all_lines = []
     list_foreach(
         this.lines_list,
         function (line_item) {
-            json.push(line_as_dict(line_item.item));
+            all_lines.push(line_as_dict(line_item.item));
         }
     );
+
+    var json = {
+        lines: all_lines,
+        names: this.names.save(),
+    };
 
     return JSON.stringify(json);
 }
@@ -232,7 +275,6 @@ Lines.prototype.render = function() {
             append_here.appendChild(line_item.item.element);
         }
     );
-
 }
 
 Lines.prototype.fix_lines = function(line_item, newline) {
@@ -351,7 +393,17 @@ function create_onclick(lines, lineitem, newtype) {
 
 function render_lineitem(line_item, lines) {
     var element = document.createElement('div');
-    element.innerHTML = render_line(line_item.item);
+    element.innerHTML = render_line(line_item.item, lines.names);
+
+    element.getElementsByClassName('cb_name')[0].onclick = function() {
+        var name = prompt(sprintf('Name for address %04X', line_item.item.addr));
+        lines.names.set(name, line_item.item.addr);
+
+        var eles = document.getElementsByClassName(sprintf('ad_%04x', line_item.item.addr));
+        for (var i = 0; i < eles.length; i++) {
+            eles[i].innerHTML = lines.names.for_display(line_item.item.addr);
+        }
+    }
 
     for (var i in __conversions) {
         var c  = __conversions[i];
@@ -371,16 +423,20 @@ __conversions_options = '';
 for (var c in __conversions)
     __conversions_options += "<a href='#' class='cb_" + __conversions[c] + "'>" + __conversions[c] + "</a> ";
 
-function render_line(line) {
-    var addr = sprintf("%04X  -  ", line.addr);
-    var html = linetypes[line.type].to_html(line);
+function render_line(line, names) {
+    var addr = sprintf(
+        "<a href='#' class='cb_name ad_%04x'>%s</a>  -  ",
+        line.addr,
+        names.for_display(line.addr)
+    );
 
-    var all = ['<pre>', addr];
-    all.push(__conversions_options);
-    all.push(' -  ');
-    all.push(html);
-    all.push('</pre>\n');
-
-    return all.join('');
+    return [
+        '<pre>',
+         addr,
+        __conversions_options,
+        ' -  ',
+        linetypes[line.type].to_html(line),
+        '</pre>\n',
+    ].join('');
 }
 
