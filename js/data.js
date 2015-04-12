@@ -398,16 +398,16 @@ function render_line(line, names) {
     );
 
     return [
-        '<td>',
+        '<td class="label">',
         label,
         '</td>',
-        '<td>',
+        '<td class="addr">',
          addr,
         '</td>',
-        '<td>',
+        '<td class="conversions">',
         __conversions_options,
         '</td>',
-        '<td>',
+        '<td class="line">',
         linetypes[line.type].to_html(line),
         '</td>',
     ].join('');
