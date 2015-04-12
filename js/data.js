@@ -73,17 +73,40 @@ var linetypes = {
             return rom.at(line.addr) + (rom.at(line.addr + 1) << 8);
         },
         to_html: function(thing, names) {
+            if (thing.custom && thing.custom.target_delta) {
+                var val = thing.val + thing.custom.target_delta;
+                return sprintf(
+                    "<a href='#loc_%04x'>(%s %s %d)</a>",
+                    val,
+                    names.for_display(val),
+                    thing.custom.target_delta > 0 ? '-' : '+',
+                    Math.abs(thing.custom.target_delta)
+                );
+            }
             return sprintf("<a href='#loc_%04x'>%s</a>", thing.val, names.for_display(thing.val));
         },
+        extras: {
+            target_delta: function(line, rom) {
+                var delta = prompt('Set target delta');
+                if (!delta)
+                    return;
 
+                delta = parseInt(delta);
+                if (delta == NaN)
+                    return;
+
+                return new Line('pointer', line.addr, rom, line.size, {target_delta: delta});
+            }
+        }
     }
 };
 
-function Line(type, addr, rom, size) {
+function Line(type, addr, rom, size, custom) {
     this.type = type;
     this.addr = addr;
     this.size = size || linetypes[type].size;
     this.val  = linetypes[type].val(this, rom);
+    this.custom = custom;
 }
 
 function line_as_dict(line) {
@@ -91,11 +114,12 @@ function line_as_dict(line) {
         type: line.type,
         addr: line.addr,
         size: line.size,
+        custom: (line.custom ? line.custom : null)
     };
 }
 
 function line_from_dict(j, rom) {
-    return new Line(j.type, j.addr, rom, j.size);
+    return new Line(j.type, j.addr, rom, j.size, j.custom);
 }
 
 // ------ //
