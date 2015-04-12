@@ -307,46 +307,6 @@ Lines.prototype.fix_lines = function(line_item, newline) {
     }
 }
 
-Lines.prototype.fix_lines2 = function(line_item, newline) {
-    var target_size     = newline.size;
-    var to_delete_size  = 0;
-    var to_delete_lines = 0;
-
-    var i = line_item;
-    while (to_delete_size < target_size) {
-        to_delete_size += i.item.size;
-        to_delete_lines++;
-        i = i.next;
-    }
-
-    to_delete_lines--;
-
-    var padding = to_delete_size - target_size;
-
-    // --- //
-
-    var new_lineitem = list_replace(line_item, newline);    
-    new_lineitem.item.element = render_lineitem(new_lineitem, this);
-
-    line_item.item.element.parentNode.replaceChild(new_lineitem.item.element, line_item.item.element);
-
-    var to_delete_item = new_lineitem.next;
-    for (var i = 0; i < to_delete_lines; i++) {
-        to_delete_item.item.element.parentNode.removeChild(to_delete_item.item.element);
-        to_delete_item = list_delete(to_delete_item);
-    }
-
-    var padding_addr_start = newline.addr + newline.size;
-    var pad_item   = new_lineitem;
-    var before_pad = new_lineitem.next.item.element;
-
-    for (var i = 0; i < padding; i++) {
-        before_pad.parentNode.insertBefore(pad_item.item.element, before_pad);
-    }
-
-    pad_item.next = line_item.next;
-}
-
 Lines.prototype.convert = function(line_item, newtype) {
     var line = line_item.item;
 
