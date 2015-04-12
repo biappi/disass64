@@ -343,13 +343,22 @@ Lines.prototype.to_string = function(line_item) {
 }
 
 
+function create_onclick(lines, lineitem, newtype) {
+    return function() {
+        lines.convert(lineitem, newtype);
+    };
+}
+
 function render_lineitem(line_item, lines) {
     var element = document.createElement('div');
     element.innerHTML = render_line(line_item.item);
 
-    var select = element.getElementsByTagName('select')[0];
-    select.onchange = function () {
-        lines.convert(line_item, this.value);
+    for (var i in __conversions) {
+        var c  = __conversions[i];
+        var cb = 'cb_' + c;
+        var el = element.getElementsByClassName(cb)[0];
+        
+        el.onclick = create_onclick(lines, line_item, c);
     }
 
     return element;
@@ -359,19 +368,19 @@ function render_lineitem(line_item, lines) {
 __conversions = Object.keys(linetypes);
 __conversions.sort();
 __conversions_options = '';
-for (var c in __conversions) 
-    __conversions_options += "<option>" + __conversions[c] + "</option>";
+for (var c in __conversions)
+    __conversions_options += "<a href='#' class='cb_" + __conversions[c] + "'>" + __conversions[c] + "</a> ";
 
 function render_line(line) {
     var addr = sprintf("%04X  -  ", line.addr);
     var html = linetypes[line.type].to_html(line);
 
     var all = ['<pre>', addr];
-    all.push('<select><option></option>');
     all.push(__conversions_options);
-    all.push('</select>  -  ');
+    all.push(' -  ');
     all.push(html);
     all.push('</pre>\n');
 
     return all.join('');
 }
+
