@@ -182,15 +182,7 @@ Names.prototype.for_display = function(addr) {
 
 // ------ //
 
-var fanculo;
-
-function changeline(line, select) {
-    fanculo.convert(line, select.value);
-}
-
 function Lines(rom, element) {
-    fanculo = this;
-
     this.rom        = rom;
     this.lines_list = null;
     this.names      = new Names();
