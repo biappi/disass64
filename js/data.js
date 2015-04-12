@@ -180,6 +180,11 @@ Names.prototype.for_display = function(addr) {
     return name || sprintf('%04X', addr);
 }
 
+Names.prototype.name = function(addr) {
+    var name = this.addresses_to_names[addr];
+    return name || '';
+}
+
 // ------ //
 
 function Lines(rom, element) {
@@ -188,7 +193,7 @@ function Lines(rom, element) {
     this.names      = new Names();
     this.element    = element;
 
-    element.appendChild(document.createElement('div'));
+    element.appendChild(document.createElement('table'));
 
     var iterator    = null;
     for (var i = 0; i < rom.size(); i++) {
@@ -255,7 +260,7 @@ Lines.prototype.save = function() {
 Lines.prototype.render = function() {
     var str = [];
     
-    var append_here = document.createElement('div');
+    var append_here = document.createElement('table');
     this.element.replaceChild(append_here, this.element.firstChild);
 
     var this_lines = this;
@@ -344,10 +349,11 @@ function create_onclick(lines, lineitem, newtype) {
 }
 
 function render_lineitem(line_item, lines) {
-    var element = document.createElement('div');
+    var element = document.createElement('tr');
     element.innerHTML = render_line(line_item.item, lines.names);
 
-    element.getElementsByClassName('cb_name')[0].onclick = function() {
+    var cb_names = element.getElementsByClassName('cb_name');
+    var cb_names_onclick = function() {
         var name = prompt(sprintf('Name for address %04X', line_item.item.addr));
         lines.names.set(name, line_item.item.addr);
 
@@ -355,6 +361,10 @@ function render_lineitem(line_item, lines) {
         for (var i = 0; i < eles.length; i++) {
             eles[i].innerHTML = lines.names.for_display(line_item.item.addr);
         }
+    };
+
+    for (var i = 0; i < cb_names.length; i++) {
+        cb_names[i].onclick = cb_names_onclick;
     }
 
     for (var i in __conversions) {
@@ -376,19 +386,30 @@ for (var c in __conversions)
     __conversions_options += "<a href='#' class='cb_" + __conversions[c] + "'>" + __conversions[c] + "</a> ";
 
 function render_line(line, names) {
-    var addr = sprintf(
-        "<a href='#' class='cb_name ad_%04x'>%s</a>  -  ",
+    var label = sprintf(
+        "<a href='#' class='cb_name ad_%04x'>%s</a> ",
         line.addr,
-        names.for_display(line.addr)
+        names.name(line.addr)
+    );
+
+    var addr = sprintf(
+        "<a href='#' class='cb_name'>%04X</a> ",
+        line.addr
     );
 
     return [
-        '<pre>',
+        '<td>',
+        label,
+        '</td>',
+        '<td>',
          addr,
+        '</td>',
+        '<td>',
         __conversions_options,
-        ' -  ',
+        '</td>',
+        '<td>',
         linetypes[line.type].to_html(line),
-        '</pre>\n',
+        '</td>',
     ].join('');
 }
 
