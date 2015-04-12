@@ -29,14 +29,9 @@ Segment.from_file = function (name, filename, address) {
 
 var linetypes = {
     uint8: {
-        create: function(line, addr, rom) {
-            return {
-                type: 'uint8',
-                line: line,
-                addr: addr,
-                size: 1,
-                val:  rom.at(addr),
-            };
+        size:    1,
+        val:     function(line, rom) {
+            return rom.at(line.addr);
         },
         to_html: function(thing) {
             return sprintf("%02X (%s)", thing.val, String.fromCharCode(thing.val));
@@ -44,14 +39,9 @@ var linetypes = {
     },
 
     uint16: {
-        create: function(line, addr, rom) {
-            return {
-                type: 'uint16',
-                line: line,
-                addr: addr,
-                size: 2,
-                val:  rom.at(addr) + (rom.at(addr + 1) << 8),
-            }
+        size:   2,
+        val:    function(line, rom) {
+            return rom.at(line.addr) + (rom.at(line.addr + 1) << 8);
         },
         to_html: function(thing) {
             return sprintf("%04X", thing.val);
@@ -59,25 +49,32 @@ var linetypes = {
     },
 
     string: {
-        create: function(line, addr, rom, size) {
-            var val = ''
-            for (var i = 0; i < size; i++)
-                val += String.fromCharCode(rom.at(addr + i));
+        size:   1,
+        val:    function(line, rom) {
+            var val = '';
+            for (var i = 0; i < line.size; i++)
+                val += String.fromCharCode(rom.at(line.addr + i));
 
-            return {
-                type: 'string',
-                line: line,
-                addr: addr,
-                size: size,
-                val:  val,
-            }
+            return val;
         },
         to_html: function(thing) {
             return thing.val;
         },
+        extras:  {
+            increase: function(line, rom) {
+                return new Line('string', line.addr, rom, line.size + 1);
+            },
+        },
     },
 
 };
+
+function Line(type, addr, rom, size) {
+    this.type = type;
+    this.addr = addr;
+    this.size = size || linetypes[type].size;
+    this.val  = linetypes[type].val(this, rom);
+}
 
 function line_as_dict(line) {
     return {
@@ -197,11 +194,7 @@ function Lines(rom, element) {
 
     var iterator    = null;
     for (var i = 0; i < rom.size(); i++) {
-        var line = linetypes.uint8.create(
-            i,
-            rom.base + i,
-            rom
-        );
+        var line = new Line('uint8', rom.base + i, rom);
 
         iterator = list_append(iterator, line);
         if (!this.lines_list) this.lines_list = iterator;
@@ -297,7 +290,7 @@ Lines.prototype.fix_lines = function(line_item, newline) {
     line_item.item.element.parentNode.insertBefore(new_lineitem.item.element, line_item.item.element);
 
     for (var i = 0; i < padding_bytes; i++) {
-        var pad = linetypes.uint8.create(null, padding_addr + i, this.rom)
+        var pad = new Line('uint8', padding_addr + i, this.rom)
         pad_item = list_append(pad_item, pad);
         pad_item.item.element = render_lineitem(pad_item, this);
         line_item.item.element.parentNode.insertBefore(pad_item.item.element, line_item.item.element);
@@ -318,34 +311,22 @@ Lines.prototype.convert = function(line_item, newtype) {
     if (line.type == newtype)
         return;
 
-    if (newtype == 'string') {
-        this.to_string(line_item);
-        return;
-    }
-
-    var newline = linetypes[newtype].create(null, line.addr, this.rom);
+    var newline = new Line(newtype, line.addr, this.rom);
     this.fix_lines(line_item, newline);
 }
-
-Lines.prototype.to_string = function(line_item) {
-    var oldline = line_item.item;
-
-    if (line_item.prev.item.type == 'string') {
-        var oldstring = line_item.prev.item;
-        var newstring = linetypes.string.create(null, oldstring.addr, this.rom, oldstring.size + 1);
-        this.fix_lines(line_item.prev, newstring);
-    }
-    else {
-        var newline = linetypes.string.create(null, oldline.addr, this.rom, 1);
-        this.fix_lines(line_item, newline)
-    }
-}
-
 
 function create_onclick(lines, lineitem, newtype) {
     return function() {
         lines.convert(lineitem, newtype);
     };
+}
+
+function create_extra(lines, lineitem, extra) {
+    return function() {
+        var line     = lineitem.item;
+        var new_line = linetypes[line.type].extras[extra](line, lines.rom);
+        lines.fix_lines(lineitem, new_line);
+    }
 }
 
 function render_lineitem(line_item, lines) {
@@ -367,6 +348,12 @@ function render_lineitem(line_item, lines) {
         cb_names[i].onclick = cb_names_onclick;
     }
 
+    for (var i in linetypes[line_item.item.type].extras) {
+        var cb = 'cb_ex_' + i;
+        var el = element.getElementsByClassName(cb)[0];
+        el.onclick = create_extra(lines, line_item, i);
+    }
+
     for (var i in __conversions) {
         var c  = __conversions[i];
         var cb = 'cb_' + c;
@@ -381,10 +368,6 @@ function render_lineitem(line_item, lines) {
 
 __conversions = Object.keys(linetypes);
 __conversions.sort();
-__conversions_options = '<div class="convmenu">';
-for (var c in __conversions)
-    __conversions_options += "<a href='#' class='cb_" + __conversions[c] + "'>" + __conversions[c] + "</a>";
-__conversions_options += '</div>';
 
 function render_line(line, names) {
     var label = sprintf(
@@ -398,10 +381,22 @@ function render_line(line, names) {
         line.addr
     );
 
+    var conv = '<div class="convmenu">';
+    for (var i in linetypes[line.type].extras) {
+        conv += "<a href='#' class='cb_ex_" + i + "'>" + i + "</a>"; 
+    }
+
+    for (var c in __conversions) {
+        var temp = __conversions[c];
+        conv += "<a href='#' class='cb_" + temp + "'>" + temp + "</a>";
+    }
+     
+    conv += '</div>';
+
     return [
         '<td class="conversions">',
         '<span class="edit">edit</span>',
-        __conversions_options,
+        conv,
         '</td>',
         '<td class="label">',
         label,
