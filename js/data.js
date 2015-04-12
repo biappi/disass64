@@ -12,17 +12,24 @@ Segment.prototype.size = function() {
     return this.mem.length;
 }
 
-Segment.from_file = function (name, filename, address) {
+Segment.from_file = function (name, filename, address, on_completion) {
     var request = new XMLHttpRequest();
+    request.onreadystatechange=function() {
+        if (request.readyState == 4) {
+            on_completion(
+                new Segment(
+                    name,
+                    new Uint8Array(request.response),
+                    address
+                )
+            );
+        }
+    }
+
     request.responseType = "arraybuffer";
-    request.open('GET', filename, false);
+    request.open('GET', filename, true);
     request.send(null);
 
-    return new Segment(
-        name,
-        new Uint8Array(request.response),
-        address
-    );
 }
 
 // ------- //
