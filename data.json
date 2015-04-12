@@ -787,699 +787,249 @@
       "custom": null
     },
     {
-      "type": "uint8",
+      "type": "string",
       "addr": 41257,
-      "size": 1,
+      "size": 4,
       "custom": null
     },
     {
-      "type": "uint8",
-      "addr": 41258,
-      "size": 1,
-      "custom": null
-    },
-    {
-      "type": "uint8",
-      "addr": 41259,
-      "size": 1,
-      "custom": null
-    },
-    {
-      "type": "uint8",
-      "addr": 41260,
-      "size": 1,
-      "custom": null
-    },
-    {
-      "type": "uint8",
+      "type": "string",
       "addr": 41261,
-      "size": 1,
+      "size": 2,
       "custom": null
     },
     {
-      "type": "uint8",
-      "addr": 41262,
-      "size": 1,
-      "custom": null
-    },
-    {
-      "type": "uint8",
+      "type": "string",
       "addr": 41263,
-      "size": 1,
+      "size": 2,
       "custom": null
     },
     {
-      "type": "uint8",
-      "addr": 41264,
-      "size": 1,
-      "custom": null
-    },
-    {
-      "type": "uint8",
+      "type": "string",
       "addr": 41265,
-      "size": 1,
+      "size": 4,
       "custom": null
     },
     {
-      "type": "uint8",
-      "addr": 41266,
-      "size": 1,
-      "custom": null
-    },
-    {
-      "type": "uint8",
-      "addr": 41267,
-      "size": 1,
-      "custom": null
-    },
-    {
-      "type": "uint8",
-      "addr": 41268,
-      "size": 1,
-      "custom": null
-    },
-    {
-      "type": "uint8",
+      "type": "string",
       "addr": 41269,
-      "size": 1,
+      "size": 4,
       "custom": null
     },
     {
-      "type": "uint8",
-      "addr": 41270,
-      "size": 1,
-      "custom": null
-    },
-    {
-      "type": "uint8",
-      "addr": 41271,
-      "size": 1,
-      "custom": null
-    },
-    {
-      "type": "uint8",
-      "addr": 41272,
-      "size": 1,
-      "custom": null
-    },
-    {
-      "type": "uint8",
+      "type": "string",
       "addr": 41273,
-      "size": 1,
+      "size": 3,
       "custom": null
     },
     {
-      "type": "uint8",
-      "addr": 41274,
-      "size": 1,
-      "custom": null
-    },
-    {
-      "type": "uint8",
-      "addr": 41275,
-      "size": 1,
-      "custom": null
-    },
-    {
-      "type": "uint8",
+      "type": "string",
       "addr": 41276,
-      "size": 1,
+      "size": 4,
       "custom": null
     },
     {
-      "type": "uint8",
-      "addr": 41277,
-      "size": 1,
-      "custom": null
-    },
-    {
-      "type": "uint8",
-      "addr": 41278,
-      "size": 1,
-      "custom": null
-    },
-    {
-      "type": "uint8",
-      "addr": 41279,
-      "size": 1,
-      "custom": null
-    },
-    {
-      "type": "uint8",
+      "type": "string",
       "addr": 41280,
       "size": 1,
       "custom": null
     },
     {
-      "type": "uint8",
+      "type": "string",
       "addr": 41281,
       "size": 1,
       "custom": null
     },
     {
-      "type": "uint8",
+      "type": "string",
       "addr": 41282,
       "size": 1,
       "custom": null
     },
     {
-      "type": "uint8",
+      "type": "string",
       "addr": 41283,
       "size": 1,
       "custom": null
     },
     {
-      "type": "uint8",
+      "type": "string",
       "addr": 41284,
       "size": 1,
       "custom": null
     },
     {
-      "type": "uint8",
+      "type": "string",
       "addr": 41285,
-      "size": 1,
+      "size": 3,
       "custom": null
     },
     {
-      "type": "uint8",
-      "addr": 41286,
-      "size": 1,
-      "custom": null
-    },
-    {
-      "type": "uint8",
-      "addr": 41287,
-      "size": 1,
-      "custom": null
-    },
-    {
-      "type": "uint8",
+      "type": "string",
       "addr": 41288,
-      "size": 1,
+      "size": 2,
       "custom": null
     },
     {
-      "type": "uint8",
-      "addr": 41289,
-      "size": 1,
-      "custom": null
-    },
-    {
-      "type": "uint8",
+      "type": "string",
       "addr": 41290,
       "size": 1,
       "custom": null
     },
     {
-      "type": "uint8",
+      "type": "string",
       "addr": 41291,
       "size": 1,
       "custom": null
     },
     {
-      "type": "uint8",
+      "type": "string",
       "addr": 41292,
       "size": 1,
       "custom": null
     },
     {
-      "type": "uint8",
+      "type": "string",
       "addr": 41293,
-      "size": 1,
+      "size": 3,
       "custom": null
     },
     {
-      "type": "uint8",
-      "addr": 41294,
-      "size": 1,
-      "custom": null
-    },
-    {
-      "type": "uint8",
-      "addr": 41295,
-      "size": 1,
-      "custom": null
-    },
-    {
-      "type": "uint8",
+      "type": "string",
       "addr": 41296,
-      "size": 1,
+      "size": 3,
       "custom": null
     },
     {
-      "type": "uint8",
-      "addr": 41297,
-      "size": 1,
-      "custom": null
-    },
-    {
-      "type": "uint8",
-      "addr": 41298,
-      "size": 1,
-      "custom": null
-    },
-    {
-      "type": "uint8",
+      "type": "string",
       "addr": 41299,
-      "size": 1,
+      "size": 3,
       "custom": null
     },
     {
-      "type": "uint8",
-      "addr": 41300,
-      "size": 1,
-      "custom": null
-    },
-    {
-      "type": "uint8",
-      "addr": 41301,
-      "size": 1,
-      "custom": null
-    },
-    {
-      "type": "uint8",
+      "type": "string",
       "addr": 41302,
-      "size": 1,
+      "size": 3,
       "custom": null
     },
     {
-      "type": "uint8",
-      "addr": 41303,
-      "size": 1,
-      "custom": null
-    },
-    {
-      "type": "uint8",
-      "addr": 41304,
-      "size": 1,
-      "custom": null
-    },
-    {
-      "type": "uint8",
+      "type": "string",
       "addr": 41305,
-      "size": 1,
+      "size": 3,
       "custom": null
     },
     {
-      "type": "uint8",
-      "addr": 41306,
-      "size": 1,
-      "custom": null
-    },
-    {
-      "type": "uint8",
-      "addr": 41307,
-      "size": 1,
-      "custom": null
-    },
-    {
-      "type": "uint8",
+      "type": "string",
       "addr": 41308,
-      "size": 1,
+      "size": 3,
       "custom": null
     },
     {
-      "type": "uint8",
-      "addr": 41309,
-      "size": 1,
-      "custom": null
-    },
-    {
-      "type": "uint8",
-      "addr": 41310,
-      "size": 1,
-      "custom": null
-    },
-    {
-      "type": "uint8",
+      "type": "string",
       "addr": 41311,
-      "size": 1,
+      "size": 3,
       "custom": null
     },
     {
-      "type": "uint8",
-      "addr": 41312,
-      "size": 1,
-      "custom": null
-    },
-    {
-      "type": "uint8",
-      "addr": 41313,
-      "size": 1,
-      "custom": null
-    },
-    {
-      "type": "uint8",
+      "type": "string",
       "addr": 41314,
-      "size": 1,
+      "size": 3,
       "custom": null
     },
     {
-      "type": "uint8",
-      "addr": 41315,
-      "size": 1,
-      "custom": null
-    },
-    {
-      "type": "uint8",
-      "addr": 41316,
-      "size": 1,
-      "custom": null
-    },
-    {
-      "type": "uint8",
+      "type": "string",
       "addr": 41317,
-      "size": 1,
+      "size": 3,
       "custom": null
     },
     {
-      "type": "uint8",
-      "addr": 41318,
-      "size": 1,
-      "custom": null
-    },
-    {
-      "type": "uint8",
-      "addr": 41319,
-      "size": 1,
-      "custom": null
-    },
-    {
-      "type": "uint8",
+      "type": "string",
       "addr": 41320,
-      "size": 1,
+      "size": 3,
       "custom": null
     },
     {
-      "type": "uint8",
-      "addr": 41321,
-      "size": 1,
-      "custom": null
-    },
-    {
-      "type": "uint8",
-      "addr": 41322,
-      "size": 1,
-      "custom": null
-    },
-    {
-      "type": "uint8",
+      "type": "string",
       "addr": 41323,
-      "size": 1,
+      "size": 3,
       "custom": null
     },
     {
-      "type": "uint8",
-      "addr": 41324,
-      "size": 1,
-      "custom": null
-    },
-    {
-      "type": "uint8",
-      "addr": 41325,
-      "size": 1,
-      "custom": null
-    },
-    {
-      "type": "uint8",
+      "type": "string",
       "addr": 41326,
-      "size": 1,
+      "size": 3,
       "custom": null
     },
     {
-      "type": "uint8",
-      "addr": 41327,
-      "size": 1,
-      "custom": null
-    },
-    {
-      "type": "uint8",
-      "addr": 41328,
-      "size": 1,
-      "custom": null
-    },
-    {
-      "type": "uint8",
+      "type": "string",
       "addr": 41329,
-      "size": 1,
+      "size": 3,
       "custom": null
     },
     {
-      "type": "uint8",
-      "addr": 41330,
-      "size": 1,
-      "custom": null
-    },
-    {
-      "type": "uint8",
-      "addr": 41331,
-      "size": 1,
-      "custom": null
-    },
-    {
-      "type": "uint8",
+      "type": "string",
       "addr": 41332,
-      "size": 1,
+      "size": 3,
       "custom": null
     },
     {
-      "type": "uint8",
-      "addr": 41333,
-      "size": 1,
-      "custom": null
-    },
-    {
-      "type": "uint8",
-      "addr": 41334,
-      "size": 1,
-      "custom": null
-    },
-    {
-      "type": "uint8",
+      "type": "string",
       "addr": 41335,
-      "size": 1,
+      "size": 4,
       "custom": null
     },
     {
-      "type": "uint8",
-      "addr": 41336,
-      "size": 1,
-      "custom": null
-    },
-    {
-      "type": "uint8",
-      "addr": 41337,
-      "size": 1,
-      "custom": null
-    },
-    {
-      "type": "uint8",
-      "addr": 41338,
-      "size": 1,
-      "custom": null
-    },
-    {
-      "type": "uint8",
+      "type": "string",
       "addr": 41339,
-      "size": 1,
+      "size": 3,
       "custom": null
     },
     {
-      "type": "uint8",
-      "addr": 41340,
-      "size": 1,
-      "custom": null
-    },
-    {
-      "type": "uint8",
-      "addr": 41341,
-      "size": 1,
-      "custom": null
-    },
-    {
-      "type": "uint8",
+      "type": "string",
       "addr": 41342,
-      "size": 1,
+      "size": 4,
       "custom": null
     },
     {
-      "type": "uint8",
-      "addr": 41343,
-      "size": 1,
-      "custom": null
-    },
-    {
-      "type": "uint8",
-      "addr": 41344,
-      "size": 1,
-      "custom": null
-    },
-    {
-      "type": "uint8",
-      "addr": 41345,
-      "size": 1,
-      "custom": null
-    },
-    {
-      "type": "uint8",
+      "type": "string",
       "addr": 41346,
-      "size": 1,
+      "size": 3,
       "custom": null
     },
     {
-      "type": "uint8",
-      "addr": 41347,
-      "size": 1,
-      "custom": null
-    },
-    {
-      "type": "uint8",
-      "addr": 41348,
-      "size": 1,
-      "custom": null
-    },
-    {
-      "type": "uint8",
+      "type": "string",
       "addr": 41349,
-      "size": 1,
+      "size": 3,
       "custom": null
     },
     {
-      "type": "uint8",
-      "addr": 41350,
-      "size": 1,
-      "custom": null
-    },
-    {
-      "type": "uint8",
-      "addr": 41351,
-      "size": 1,
-      "custom": null
-    },
-    {
-      "type": "uint8",
+      "type": "string",
       "addr": 41352,
-      "size": 1,
+      "size": 4,
       "custom": null
     },
     {
-      "type": "uint8",
-      "addr": 41353,
-      "size": 1,
-      "custom": null
-    },
-    {
-      "type": "uint8",
-      "addr": 41354,
-      "size": 1,
-      "custom": null
-    },
-    {
-      "type": "uint8",
-      "addr": 41355,
-      "size": 1,
-      "custom": null
-    },
-    {
-      "type": "uint8",
+      "type": "string",
       "addr": 41356,
-      "size": 1,
+      "size": 5,
       "custom": null
     },
     {
-      "type": "uint8",
-      "addr": 41357,
-      "size": 1,
-      "custom": null
-    },
-    {
-      "type": "uint8",
-      "addr": 41358,
-      "size": 1,
-      "custom": null
-    },
-    {
-      "type": "uint8",
-      "addr": 41359,
-      "size": 1,
-      "custom": null
-    },
-    {
-      "type": "uint8",
-      "addr": 41360,
-      "size": 1,
-      "custom": null
-    },
-    {
-      "type": "uint8",
+      "type": "string",
       "addr": 41361,
-      "size": 1,
+      "size": 6,
       "custom": null
     },
     {
-      "type": "uint8",
-      "addr": 41362,
-      "size": 1,
-      "custom": null
-    },
-    {
-      "type": "uint8",
-      "addr": 41363,
-      "size": 1,
-      "custom": null
-    },
-    {
-      "type": "uint8",
-      "addr": 41364,
-      "size": 1,
-      "custom": null
-    },
-    {
-      "type": "uint8",
-      "addr": 41365,
-      "size": 1,
-      "custom": null
-    },
-    {
-      "type": "uint8",
-      "addr": 41366,
-      "size": 1,
-      "custom": null
-    },
-    {
-      "type": "uint8",
+      "type": "string",
       "addr": 41367,
-      "size": 1,
+      "size": 4,
       "custom": null
     },
     {
-      "type": "uint8",
-      "addr": 41368,
-      "size": 1,
-      "custom": null
-    },
-    {
-      "type": "uint8",
-      "addr": 41369,
-      "size": 1,
-      "custom": null
-    },
-    {
-      "type": "uint8",
-      "addr": 41370,
-      "size": 1,
-      "custom": null
-    },
-    {
-      "type": "uint8",
+      "type": "string",
       "addr": 41371,
-      "size": 1,
-      "custom": null
-    },
-    {
-      "type": "uint8",
-      "addr": 41372,
-      "size": 1,
+      "size": 2,
       "custom": null
     },
     {
@@ -1489,2955 +1039,387 @@
       "custom": null
     },
     {
-      "type": "uint8",
+      "type": "string",
       "addr": 41374,
-      "size": 1,
+      "size": 14,
       "custom": null
     },
     {
-      "type": "uint8",
-      "addr": 41375,
-      "size": 1,
-      "custom": null
-    },
-    {
-      "type": "uint8",
-      "addr": 41376,
-      "size": 1,
-      "custom": null
-    },
-    {
-      "type": "uint8",
-      "addr": 41377,
-      "size": 1,
-      "custom": null
-    },
-    {
-      "type": "uint8",
-      "addr": 41378,
-      "size": 1,
-      "custom": null
-    },
-    {
-      "type": "uint8",
-      "addr": 41379,
-      "size": 1,
-      "custom": null
-    },
-    {
-      "type": "uint8",
-      "addr": 41380,
-      "size": 1,
-      "custom": null
-    },
-    {
-      "type": "uint8",
-      "addr": 41381,
-      "size": 1,
-      "custom": null
-    },
-    {
-      "type": "uint8",
-      "addr": 41382,
-      "size": 1,
-      "custom": null
-    },
-    {
-      "type": "uint8",
-      "addr": 41383,
-      "size": 1,
-      "custom": null
-    },
-    {
-      "type": "uint8",
-      "addr": 41384,
-      "size": 1,
-      "custom": null
-    },
-    {
-      "type": "uint8",
-      "addr": 41385,
-      "size": 1,
-      "custom": null
-    },
-    {
-      "type": "uint8",
-      "addr": 41386,
-      "size": 1,
-      "custom": null
-    },
-    {
-      "type": "uint8",
-      "addr": 41387,
-      "size": 1,
-      "custom": null
-    },
-    {
-      "type": "uint8",
+      "type": "string",
       "addr": 41388,
-      "size": 1,
+      "size": 9,
       "custom": null
     },
     {
-      "type": "uint8",
-      "addr": 41389,
-      "size": 1,
-      "custom": null
-    },
-    {
-      "type": "uint8",
-      "addr": 41390,
-      "size": 1,
-      "custom": null
-    },
-    {
-      "type": "uint8",
-      "addr": 41391,
-      "size": 1,
-      "custom": null
-    },
-    {
-      "type": "uint8",
-      "addr": 41392,
-      "size": 1,
-      "custom": null
-    },
-    {
-      "type": "uint8",
-      "addr": 41393,
-      "size": 1,
-      "custom": null
-    },
-    {
-      "type": "uint8",
-      "addr": 41394,
-      "size": 1,
-      "custom": null
-    },
-    {
-      "type": "uint8",
-      "addr": 41395,
-      "size": 1,
-      "custom": null
-    },
-    {
-      "type": "uint8",
-      "addr": 41396,
-      "size": 1,
-      "custom": null
-    },
-    {
-      "type": "uint8",
+      "type": "string",
       "addr": 41397,
-      "size": 1,
+      "size": 13,
       "custom": null
     },
     {
-      "type": "uint8",
-      "addr": 41398,
-      "size": 1,
-      "custom": null
-    },
-    {
-      "type": "uint8",
-      "addr": 41399,
-      "size": 1,
-      "custom": null
-    },
-    {
-      "type": "uint8",
-      "addr": 41400,
-      "size": 1,
-      "custom": null
-    },
-    {
-      "type": "uint8",
-      "addr": 41401,
-      "size": 1,
-      "custom": null
-    },
-    {
-      "type": "uint8",
-      "addr": 41402,
-      "size": 1,
-      "custom": null
-    },
-    {
-      "type": "uint8",
-      "addr": 41403,
-      "size": 1,
-      "custom": null
-    },
-    {
-      "type": "uint8",
-      "addr": 41404,
-      "size": 1,
-      "custom": null
-    },
-    {
-      "type": "uint8",
-      "addr": 41405,
-      "size": 1,
-      "custom": null
-    },
-    {
-      "type": "uint8",
-      "addr": 41406,
-      "size": 1,
-      "custom": null
-    },
-    {
-      "type": "uint8",
-      "addr": 41407,
-      "size": 1,
-      "custom": null
-    },
-    {
-      "type": "uint8",
-      "addr": 41408,
-      "size": 1,
-      "custom": null
-    },
-    {
-      "type": "uint8",
-      "addr": 41409,
-      "size": 1,
-      "custom": null
-    },
-    {
-      "type": "uint8",
+      "type": "string",
       "addr": 41410,
-      "size": 1,
+      "size": 14,
       "custom": null
     },
     {
-      "type": "uint8",
-      "addr": 41411,
-      "size": 1,
-      "custom": null
-    },
-    {
-      "type": "uint8",
-      "addr": 41412,
-      "size": 1,
-      "custom": null
-    },
-    {
-      "type": "uint8",
-      "addr": 41413,
-      "size": 1,
-      "custom": null
-    },
-    {
-      "type": "uint8",
-      "addr": 41414,
-      "size": 1,
-      "custom": null
-    },
-    {
-      "type": "uint8",
-      "addr": 41415,
-      "size": 1,
-      "custom": null
-    },
-    {
-      "type": "uint8",
-      "addr": 41416,
-      "size": 1,
-      "custom": null
-    },
-    {
-      "type": "uint8",
-      "addr": 41417,
-      "size": 1,
-      "custom": null
-    },
-    {
-      "type": "uint8",
-      "addr": 41418,
-      "size": 1,
-      "custom": null
-    },
-    {
-      "type": "uint8",
-      "addr": 41419,
-      "size": 1,
-      "custom": null
-    },
-    {
-      "type": "uint8",
-      "addr": 41420,
-      "size": 1,
-      "custom": null
-    },
-    {
-      "type": "uint8",
-      "addr": 41421,
-      "size": 1,
-      "custom": null
-    },
-    {
-      "type": "uint8",
-      "addr": 41422,
-      "size": 1,
-      "custom": null
-    },
-    {
-      "type": "uint8",
-      "addr": 41423,
-      "size": 1,
-      "custom": null
-    },
-    {
-      "type": "uint8",
+      "type": "string",
       "addr": 41424,
-      "size": 1,
+      "size": 18,
       "custom": null
     },
     {
-      "type": "uint8",
-      "addr": 41425,
-      "size": 1,
-      "custom": null
-    },
-    {
-      "type": "uint8",
-      "addr": 41426,
-      "size": 1,
-      "custom": null
-    },
-    {
-      "type": "uint8",
-      "addr": 41427,
-      "size": 1,
-      "custom": null
-    },
-    {
-      "type": "uint8",
-      "addr": 41428,
-      "size": 1,
-      "custom": null
-    },
-    {
-      "type": "uint8",
-      "addr": 41429,
-      "size": 1,
-      "custom": null
-    },
-    {
-      "type": "uint8",
-      "addr": 41430,
-      "size": 1,
-      "custom": null
-    },
-    {
-      "type": "uint8",
-      "addr": 41431,
-      "size": 1,
-      "custom": null
-    },
-    {
-      "type": "uint8",
-      "addr": 41432,
-      "size": 1,
-      "custom": null
-    },
-    {
-      "type": "uint8",
-      "addr": 41433,
-      "size": 1,
-      "custom": null
-    },
-    {
-      "type": "uint8",
-      "addr": 41434,
-      "size": 1,
-      "custom": null
-    },
-    {
-      "type": "uint8",
-      "addr": 41435,
-      "size": 1,
-      "custom": null
-    },
-    {
-      "type": "uint8",
-      "addr": 41436,
-      "size": 1,
-      "custom": null
-    },
-    {
-      "type": "uint8",
-      "addr": 41437,
-      "size": 1,
-      "custom": null
-    },
-    {
-      "type": "uint8",
-      "addr": 41438,
-      "size": 1,
-      "custom": null
-    },
-    {
-      "type": "uint8",
-      "addr": 41439,
-      "size": 1,
-      "custom": null
-    },
-    {
-      "type": "uint8",
-      "addr": 41440,
-      "size": 1,
-      "custom": null
-    },
-    {
-      "type": "uint8",
-      "addr": 41441,
-      "size": 1,
-      "custom": null
-    },
-    {
-      "type": "uint8",
+      "type": "string",
       "addr": 41442,
-      "size": 1,
+      "size": 14,
       "custom": null
     },
     {
-      "type": "uint8",
-      "addr": 41443,
-      "size": 1,
-      "custom": null
-    },
-    {
-      "type": "uint8",
-      "addr": 41444,
-      "size": 1,
-      "custom": null
-    },
-    {
-      "type": "uint8",
-      "addr": 41445,
-      "size": 1,
-      "custom": null
-    },
-    {
-      "type": "uint8",
-      "addr": 41446,
-      "size": 1,
-      "custom": null
-    },
-    {
-      "type": "uint8",
-      "addr": 41447,
-      "size": 1,
-      "custom": null
-    },
-    {
-      "type": "uint8",
-      "addr": 41448,
-      "size": 1,
-      "custom": null
-    },
-    {
-      "type": "uint8",
-      "addr": 41449,
-      "size": 1,
-      "custom": null
-    },
-    {
-      "type": "uint8",
-      "addr": 41450,
-      "size": 1,
-      "custom": null
-    },
-    {
-      "type": "uint8",
-      "addr": 41451,
-      "size": 1,
-      "custom": null
-    },
-    {
-      "type": "uint8",
-      "addr": 41452,
-      "size": 1,
-      "custom": null
-    },
-    {
-      "type": "uint8",
-      "addr": 41453,
-      "size": 1,
-      "custom": null
-    },
-    {
-      "type": "uint8",
-      "addr": 41454,
-      "size": 1,
-      "custom": null
-    },
-    {
-      "type": "uint8",
-      "addr": 41455,
-      "size": 1,
-      "custom": null
-    },
-    {
-      "type": "uint8",
+      "type": "string",
       "addr": 41456,
-      "size": 1,
+      "size": 15,
       "custom": null
     },
     {
-      "type": "uint8",
-      "addr": 41457,
-      "size": 1,
-      "custom": null
-    },
-    {
-      "type": "uint8",
-      "addr": 41458,
-      "size": 1,
-      "custom": null
-    },
-    {
-      "type": "uint8",
-      "addr": 41459,
-      "size": 1,
-      "custom": null
-    },
-    {
-      "type": "uint8",
-      "addr": 41460,
-      "size": 1,
-      "custom": null
-    },
-    {
-      "type": "uint8",
-      "addr": 41461,
-      "size": 1,
-      "custom": null
-    },
-    {
-      "type": "uint8",
-      "addr": 41462,
-      "size": 1,
-      "custom": null
-    },
-    {
-      "type": "uint8",
-      "addr": 41463,
-      "size": 1,
-      "custom": null
-    },
-    {
-      "type": "uint8",
-      "addr": 41464,
-      "size": 1,
-      "custom": null
-    },
-    {
-      "type": "uint8",
-      "addr": 41465,
-      "size": 1,
-      "custom": null
-    },
-    {
-      "type": "uint8",
-      "addr": 41466,
-      "size": 1,
-      "custom": null
-    },
-    {
-      "type": "uint8",
-      "addr": 41467,
-      "size": 1,
-      "custom": null
-    },
-    {
-      "type": "uint8",
-      "addr": 41468,
-      "size": 1,
-      "custom": null
-    },
-    {
-      "type": "uint8",
-      "addr": 41469,
-      "size": 1,
-      "custom": null
-    },
-    {
-      "type": "uint8",
-      "addr": 41470,
-      "size": 1,
-      "custom": null
-    },
-    {
-      "type": "uint8",
+      "type": "string",
       "addr": 41471,
-      "size": 1,
+      "size": 17,
       "custom": null
     },
     {
-      "type": "uint8",
-      "addr": 41472,
-      "size": 1,
-      "custom": null
-    },
-    {
-      "type": "uint8",
-      "addr": 41473,
-      "size": 1,
-      "custom": null
-    },
-    {
-      "type": "uint8",
-      "addr": 41474,
-      "size": 1,
-      "custom": null
-    },
-    {
-      "type": "uint8",
-      "addr": 41475,
-      "size": 1,
-      "custom": null
-    },
-    {
-      "type": "uint8",
-      "addr": 41476,
-      "size": 1,
-      "custom": null
-    },
-    {
-      "type": "uint8",
-      "addr": 41477,
-      "size": 1,
-      "custom": null
-    },
-    {
-      "type": "uint8",
-      "addr": 41478,
-      "size": 1,
-      "custom": null
-    },
-    {
-      "type": "uint8",
-      "addr": 41479,
-      "size": 1,
-      "custom": null
-    },
-    {
-      "type": "uint8",
-      "addr": 41480,
-      "size": 1,
-      "custom": null
-    },
-    {
-      "type": "uint8",
-      "addr": 41481,
-      "size": 1,
-      "custom": null
-    },
-    {
-      "type": "uint8",
-      "addr": 41482,
-      "size": 1,
-      "custom": null
-    },
-    {
-      "type": "uint8",
-      "addr": 41483,
-      "size": 1,
-      "custom": null
-    },
-    {
-      "type": "uint8",
-      "addr": 41484,
-      "size": 1,
-      "custom": null
-    },
-    {
-      "type": "uint8",
-      "addr": 41485,
-      "size": 1,
-      "custom": null
-    },
-    {
-      "type": "uint8",
-      "addr": 41486,
-      "size": 1,
-      "custom": null
-    },
-    {
-      "type": "uint8",
-      "addr": 41487,
-      "size": 1,
-      "custom": null
-    },
-    {
-      "type": "uint8",
+      "type": "string",
       "addr": 41488,
-      "size": 1,
+      "size": 21,
       "custom": null
     },
     {
-      "type": "uint8",
-      "addr": 41489,
-      "size": 1,
-      "custom": null
-    },
-    {
-      "type": "uint8",
-      "addr": 41490,
-      "size": 1,
-      "custom": null
-    },
-    {
-      "type": "uint8",
-      "addr": 41491,
-      "size": 1,
-      "custom": null
-    },
-    {
-      "type": "uint8",
-      "addr": 41492,
-      "size": 1,
-      "custom": null
-    },
-    {
-      "type": "uint8",
-      "addr": 41493,
-      "size": 1,
-      "custom": null
-    },
-    {
-      "type": "uint8",
-      "addr": 41494,
-      "size": 1,
-      "custom": null
-    },
-    {
-      "type": "uint8",
-      "addr": 41495,
-      "size": 1,
-      "custom": null
-    },
-    {
-      "type": "uint8",
-      "addr": 41496,
-      "size": 1,
-      "custom": null
-    },
-    {
-      "type": "uint8",
-      "addr": 41497,
-      "size": 1,
-      "custom": null
-    },
-    {
-      "type": "uint8",
-      "addr": 41498,
-      "size": 1,
-      "custom": null
-    },
-    {
-      "type": "uint8",
-      "addr": 41499,
-      "size": 1,
-      "custom": null
-    },
-    {
-      "type": "uint8",
-      "addr": 41500,
-      "size": 1,
-      "custom": null
-    },
-    {
-      "type": "uint8",
-      "addr": 41501,
-      "size": 1,
-      "custom": null
-    },
-    {
-      "type": "uint8",
-      "addr": 41502,
-      "size": 1,
-      "custom": null
-    },
-    {
-      "type": "uint8",
-      "addr": 41503,
-      "size": 1,
-      "custom": null
-    },
-    {
-      "type": "uint8",
-      "addr": 41504,
-      "size": 1,
-      "custom": null
-    },
-    {
-      "type": "uint8",
-      "addr": 41505,
-      "size": 1,
-      "custom": null
-    },
-    {
-      "type": "uint8",
-      "addr": 41506,
-      "size": 1,
-      "custom": null
-    },
-    {
-      "type": "uint8",
-      "addr": 41507,
-      "size": 1,
-      "custom": null
-    },
-    {
-      "type": "uint8",
-      "addr": 41508,
-      "size": 1,
-      "custom": null
-    },
-    {
-      "type": "uint8",
+      "type": "string",
       "addr": 41509,
-      "size": 1,
+      "size": 16,
       "custom": null
     },
     {
-      "type": "uint8",
-      "addr": 41510,
-      "size": 1,
-      "custom": null
-    },
-    {
-      "type": "uint8",
-      "addr": 41511,
-      "size": 1,
-      "custom": null
-    },
-    {
-      "type": "uint8",
-      "addr": 41512,
-      "size": 1,
-      "custom": null
-    },
-    {
-      "type": "uint8",
-      "addr": 41513,
-      "size": 1,
-      "custom": null
-    },
-    {
-      "type": "uint8",
-      "addr": 41514,
-      "size": 1,
-      "custom": null
-    },
-    {
-      "type": "uint8",
-      "addr": 41515,
-      "size": 1,
-      "custom": null
-    },
-    {
-      "type": "uint8",
-      "addr": 41516,
-      "size": 1,
-      "custom": null
-    },
-    {
-      "type": "uint8",
-      "addr": 41517,
-      "size": 1,
-      "custom": null
-    },
-    {
-      "type": "uint8",
-      "addr": 41518,
-      "size": 1,
-      "custom": null
-    },
-    {
-      "type": "uint8",
-      "addr": 41519,
-      "size": 1,
-      "custom": null
-    },
-    {
-      "type": "uint8",
-      "addr": 41520,
-      "size": 1,
-      "custom": null
-    },
-    {
-      "type": "uint8",
-      "addr": 41521,
-      "size": 1,
-      "custom": null
-    },
-    {
-      "type": "uint8",
-      "addr": 41522,
-      "size": 1,
-      "custom": null
-    },
-    {
-      "type": "uint8",
-      "addr": 41523,
-      "size": 1,
-      "custom": null
-    },
-    {
-      "type": "uint8",
-      "addr": 41524,
-      "size": 1,
-      "custom": null
-    },
-    {
-      "type": "uint8",
+      "type": "string",
       "addr": 41525,
-      "size": 1,
+      "size": 6,
       "custom": null
     },
     {
-      "type": "uint8",
-      "addr": 41526,
-      "size": 1,
-      "custom": null
-    },
-    {
-      "type": "uint8",
-      "addr": 41527,
-      "size": 1,
-      "custom": null
-    },
-    {
-      "type": "uint8",
-      "addr": 41528,
-      "size": 1,
-      "custom": null
-    },
-    {
-      "type": "uint8",
-      "addr": 41529,
-      "size": 1,
-      "custom": null
-    },
-    {
-      "type": "uint8",
-      "addr": 41530,
-      "size": 1,
-      "custom": null
-    },
-    {
-      "type": "uint8",
+      "type": "string",
       "addr": 41531,
-      "size": 1,
+      "size": 20,
       "custom": null
     },
     {
-      "type": "uint8",
-      "addr": 41532,
-      "size": 1,
-      "custom": null
-    },
-    {
-      "type": "uint8",
-      "addr": 41533,
-      "size": 1,
-      "custom": null
-    },
-    {
-      "type": "uint8",
-      "addr": 41534,
-      "size": 1,
-      "custom": null
-    },
-    {
-      "type": "uint8",
-      "addr": 41535,
-      "size": 1,
-      "custom": null
-    },
-    {
-      "type": "uint8",
-      "addr": 41536,
-      "size": 1,
-      "custom": null
-    },
-    {
-      "type": "uint8",
-      "addr": 41537,
-      "size": 1,
-      "custom": null
-    },
-    {
-      "type": "uint8",
-      "addr": 41538,
-      "size": 1,
-      "custom": null
-    },
-    {
-      "type": "uint8",
-      "addr": 41539,
-      "size": 1,
-      "custom": null
-    },
-    {
-      "type": "uint8",
-      "addr": 41540,
-      "size": 1,
-      "custom": null
-    },
-    {
-      "type": "uint8",
-      "addr": 41541,
-      "size": 1,
-      "custom": null
-    },
-    {
-      "type": "uint8",
-      "addr": 41542,
-      "size": 1,
-      "custom": null
-    },
-    {
-      "type": "uint8",
-      "addr": 41543,
-      "size": 1,
-      "custom": null
-    },
-    {
-      "type": "uint8",
-      "addr": 41544,
-      "size": 1,
-      "custom": null
-    },
-    {
-      "type": "uint8",
-      "addr": 41545,
-      "size": 1,
-      "custom": null
-    },
-    {
-      "type": "uint8",
-      "addr": 41546,
-      "size": 1,
-      "custom": null
-    },
-    {
-      "type": "uint8",
-      "addr": 41547,
-      "size": 1,
-      "custom": null
-    },
-    {
-      "type": "uint8",
-      "addr": 41548,
-      "size": 1,
-      "custom": null
-    },
-    {
-      "type": "uint8",
-      "addr": 41549,
-      "size": 1,
-      "custom": null
-    },
-    {
-      "type": "uint8",
-      "addr": 41550,
-      "size": 1,
-      "custom": null
-    },
-    {
-      "type": "uint8",
+      "type": "string",
       "addr": 41551,
-      "size": 1,
+      "size": 11,
       "custom": null
     },
     {
-      "type": "uint8",
-      "addr": 41552,
-      "size": 1,
-      "custom": null
-    },
-    {
-      "type": "uint8",
-      "addr": 41553,
-      "size": 1,
-      "custom": null
-    },
-    {
-      "type": "uint8",
-      "addr": 41554,
-      "size": 1,
-      "custom": null
-    },
-    {
-      "type": "uint8",
-      "addr": 41555,
-      "size": 1,
-      "custom": null
-    },
-    {
-      "type": "uint8",
-      "addr": 41556,
-      "size": 1,
-      "custom": null
-    },
-    {
-      "type": "uint8",
-      "addr": 41557,
-      "size": 1,
-      "custom": null
-    },
-    {
-      "type": "uint8",
-      "addr": 41558,
-      "size": 1,
-      "custom": null
-    },
-    {
-      "type": "uint8",
-      "addr": 41559,
-      "size": 1,
-      "custom": null
-    },
-    {
-      "type": "uint8",
-      "addr": 41560,
-      "size": 1,
-      "custom": null
-    },
-    {
-      "type": "uint8",
-      "addr": 41561,
-      "size": 1,
-      "custom": null
-    },
-    {
-      "type": "uint8",
+      "type": "string",
       "addr": 41562,
-      "size": 1,
+      "size": 16,
       "custom": null
     },
     {
-      "type": "uint8",
-      "addr": 41563,
-      "size": 1,
-      "custom": null
-    },
-    {
-      "type": "uint8",
-      "addr": 41564,
-      "size": 1,
-      "custom": null
-    },
-    {
-      "type": "uint8",
-      "addr": 41565,
-      "size": 1,
-      "custom": null
-    },
-    {
-      "type": "uint8",
-      "addr": 41566,
-      "size": 1,
-      "custom": null
-    },
-    {
-      "type": "uint8",
-      "addr": 41567,
-      "size": 1,
-      "custom": null
-    },
-    {
-      "type": "uint8",
-      "addr": 41568,
-      "size": 1,
-      "custom": null
-    },
-    {
-      "type": "uint8",
-      "addr": 41569,
-      "size": 1,
-      "custom": null
-    },
-    {
-      "type": "uint8",
-      "addr": 41570,
-      "size": 1,
-      "custom": null
-    },
-    {
-      "type": "uint8",
-      "addr": 41571,
-      "size": 1,
-      "custom": null
-    },
-    {
-      "type": "uint8",
-      "addr": 41572,
-      "size": 1,
-      "custom": null
-    },
-    {
-      "type": "uint8",
-      "addr": 41573,
-      "size": 1,
-      "custom": null
-    },
-    {
-      "type": "uint8",
-      "addr": 41574,
-      "size": 1,
-      "custom": null
-    },
-    {
-      "type": "uint8",
-      "addr": 41575,
-      "size": 1,
-      "custom": null
-    },
-    {
-      "type": "uint8",
-      "addr": 41576,
-      "size": 1,
-      "custom": null
-    },
-    {
-      "type": "uint8",
-      "addr": 41577,
-      "size": 1,
-      "custom": null
-    },
-    {
-      "type": "uint8",
+      "type": "string",
       "addr": 41578,
-      "size": 1,
+      "size": 8,
       "custom": null
     },
     {
-      "type": "uint8",
-      "addr": 41579,
-      "size": 1,
-      "custom": null
-    },
-    {
-      "type": "uint8",
-      "addr": 41580,
-      "size": 1,
-      "custom": null
-    },
-    {
-      "type": "uint8",
-      "addr": 41581,
-      "size": 1,
-      "custom": null
-    },
-    {
-      "type": "uint8",
-      "addr": 41582,
-      "size": 1,
-      "custom": null
-    },
-    {
-      "type": "uint8",
-      "addr": 41583,
-      "size": 1,
-      "custom": null
-    },
-    {
-      "type": "uint8",
-      "addr": 41584,
-      "size": 1,
-      "custom": null
-    },
-    {
-      "type": "uint8",
-      "addr": 41585,
-      "size": 1,
-      "custom": null
-    },
-    {
-      "type": "uint8",
+      "type": "string",
       "addr": 41586,
-      "size": 1,
+      "size": 13,
       "custom": null
     },
     {
-      "type": "uint8",
-      "addr": 41587,
-      "size": 1,
-      "custom": null
-    },
-    {
-      "type": "uint8",
-      "addr": 41588,
-      "size": 1,
-      "custom": null
-    },
-    {
-      "type": "uint8",
-      "addr": 41589,
-      "size": 1,
-      "custom": null
-    },
-    {
-      "type": "uint8",
-      "addr": 41590,
-      "size": 1,
-      "custom": null
-    },
-    {
-      "type": "uint8",
-      "addr": 41591,
-      "size": 1,
-      "custom": null
-    },
-    {
-      "type": "uint8",
-      "addr": 41592,
-      "size": 1,
-      "custom": null
-    },
-    {
-      "type": "uint8",
-      "addr": 41593,
-      "size": 1,
-      "custom": null
-    },
-    {
-      "type": "uint8",
-      "addr": 41594,
-      "size": 1,
-      "custom": null
-    },
-    {
-      "type": "uint8",
-      "addr": 41595,
-      "size": 1,
-      "custom": null
-    },
-    {
-      "type": "uint8",
-      "addr": 41596,
-      "size": 1,
-      "custom": null
-    },
-    {
-      "type": "uint8",
-      "addr": 41597,
-      "size": 1,
-      "custom": null
-    },
-    {
-      "type": "uint8",
-      "addr": 41598,
-      "size": 1,
-      "custom": null
-    },
-    {
-      "type": "uint8",
+      "type": "string",
       "addr": 41599,
-      "size": 1,
+      "size": 17,
       "custom": null
     },
     {
-      "type": "uint8",
-      "addr": 41600,
-      "size": 1,
-      "custom": null
-    },
-    {
-      "type": "uint8",
-      "addr": 41601,
-      "size": 1,
-      "custom": null
-    },
-    {
-      "type": "uint8",
-      "addr": 41602,
-      "size": 1,
-      "custom": null
-    },
-    {
-      "type": "uint8",
-      "addr": 41603,
-      "size": 1,
-      "custom": null
-    },
-    {
-      "type": "uint8",
-      "addr": 41604,
-      "size": 1,
-      "custom": null
-    },
-    {
-      "type": "uint8",
-      "addr": 41605,
-      "size": 1,
-      "custom": null
-    },
-    {
-      "type": "uint8",
-      "addr": 41606,
-      "size": 1,
-      "custom": null
-    },
-    {
-      "type": "uint8",
-      "addr": 41607,
-      "size": 1,
-      "custom": null
-    },
-    {
-      "type": "uint8",
-      "addr": 41608,
-      "size": 1,
-      "custom": null
-    },
-    {
-      "type": "uint8",
-      "addr": 41609,
-      "size": 1,
-      "custom": null
-    },
-    {
-      "type": "uint8",
-      "addr": 41610,
-      "size": 1,
-      "custom": null
-    },
-    {
-      "type": "uint8",
-      "addr": 41611,
-      "size": 1,
-      "custom": null
-    },
-    {
-      "type": "uint8",
-      "addr": 41612,
-      "size": 1,
-      "custom": null
-    },
-    {
-      "type": "uint8",
-      "addr": 41613,
-      "size": 1,
-      "custom": null
-    },
-    {
-      "type": "uint8",
-      "addr": 41614,
-      "size": 1,
-      "custom": null
-    },
-    {
-      "type": "uint8",
-      "addr": 41615,
-      "size": 1,
-      "custom": null
-    },
-    {
-      "type": "uint8",
+      "type": "string",
       "addr": 41616,
-      "size": 1,
+      "size": 13,
       "custom": null
     },
     {
-      "type": "uint8",
-      "addr": 41617,
-      "size": 1,
-      "custom": null
-    },
-    {
-      "type": "uint8",
-      "addr": 41618,
-      "size": 1,
-      "custom": null
-    },
-    {
-      "type": "uint8",
-      "addr": 41619,
-      "size": 1,
-      "custom": null
-    },
-    {
-      "type": "uint8",
-      "addr": 41620,
-      "size": 1,
-      "custom": null
-    },
-    {
-      "type": "uint8",
-      "addr": 41621,
-      "size": 1,
-      "custom": null
-    },
-    {
-      "type": "uint8",
-      "addr": 41622,
-      "size": 1,
-      "custom": null
-    },
-    {
-      "type": "uint8",
-      "addr": 41623,
-      "size": 1,
-      "custom": null
-    },
-    {
-      "type": "uint8",
-      "addr": 41624,
-      "size": 1,
-      "custom": null
-    },
-    {
-      "type": "uint8",
-      "addr": 41625,
-      "size": 1,
-      "custom": null
-    },
-    {
-      "type": "uint8",
-      "addr": 41626,
-      "size": 1,
-      "custom": null
-    },
-    {
-      "type": "uint8",
-      "addr": 41627,
-      "size": 1,
-      "custom": null
-    },
-    {
-      "type": "uint8",
-      "addr": 41628,
-      "size": 1,
-      "custom": null
-    },
-    {
-      "type": "uint8",
+      "type": "string",
       "addr": 41629,
-      "size": 1,
+      "size": 13,
       "custom": null
     },
     {
-      "type": "uint8",
-      "addr": 41630,
-      "size": 1,
-      "custom": null
-    },
-    {
-      "type": "uint8",
-      "addr": 41631,
-      "size": 1,
-      "custom": null
-    },
-    {
-      "type": "uint8",
-      "addr": 41632,
-      "size": 1,
-      "custom": null
-    },
-    {
-      "type": "uint8",
-      "addr": 41633,
-      "size": 1,
-      "custom": null
-    },
-    {
-      "type": "uint8",
-      "addr": 41634,
-      "size": 1,
-      "custom": null
-    },
-    {
-      "type": "uint8",
-      "addr": 41635,
-      "size": 1,
-      "custom": null
-    },
-    {
-      "type": "uint8",
-      "addr": 41636,
-      "size": 1,
-      "custom": null
-    },
-    {
-      "type": "uint8",
-      "addr": 41637,
-      "size": 1,
-      "custom": null
-    },
-    {
-      "type": "uint8",
-      "addr": 41638,
-      "size": 1,
-      "custom": null
-    },
-    {
-      "type": "uint8",
-      "addr": 41639,
-      "size": 1,
-      "custom": null
-    },
-    {
-      "type": "uint8",
-      "addr": 41640,
-      "size": 1,
-      "custom": null
-    },
-    {
-      "type": "uint8",
-      "addr": 41641,
-      "size": 1,
-      "custom": null
-    },
-    {
-      "type": "uint8",
+      "type": "string",
       "addr": 41642,
-      "size": 1,
+      "size": 16,
       "custom": null
     },
     {
-      "type": "uint8",
-      "addr": 41643,
-      "size": 1,
-      "custom": null
-    },
-    {
-      "type": "uint8",
-      "addr": 41644,
-      "size": 1,
-      "custom": null
-    },
-    {
-      "type": "uint8",
-      "addr": 41645,
-      "size": 1,
-      "custom": null
-    },
-    {
-      "type": "uint8",
-      "addr": 41646,
-      "size": 1,
-      "custom": null
-    },
-    {
-      "type": "uint8",
-      "addr": 41647,
-      "size": 1,
-      "custom": null
-    },
-    {
-      "type": "uint8",
-      "addr": 41648,
-      "size": 1,
-      "custom": null
-    },
-    {
-      "type": "uint8",
-      "addr": 41649,
-      "size": 1,
-      "custom": null
-    },
-    {
-      "type": "uint8",
-      "addr": 41650,
-      "size": 1,
-      "custom": null
-    },
-    {
-      "type": "uint8",
-      "addr": 41651,
-      "size": 1,
-      "custom": null
-    },
-    {
-      "type": "uint8",
-      "addr": 41652,
-      "size": 1,
-      "custom": null
-    },
-    {
-      "type": "uint8",
-      "addr": 41653,
-      "size": 1,
-      "custom": null
-    },
-    {
-      "type": "uint8",
-      "addr": 41654,
-      "size": 1,
-      "custom": null
-    },
-    {
-      "type": "uint8",
-      "addr": 41655,
-      "size": 1,
-      "custom": null
-    },
-    {
-      "type": "uint8",
-      "addr": 41656,
-      "size": 1,
-      "custom": null
-    },
-    {
-      "type": "uint8",
-      "addr": 41657,
-      "size": 1,
-      "custom": null
-    },
-    {
-      "type": "uint8",
+      "type": "string",
       "addr": 41658,
-      "size": 1,
+      "size": 14,
       "custom": null
     },
     {
-      "type": "uint8",
-      "addr": 41659,
-      "size": 1,
-      "custom": null
-    },
-    {
-      "type": "uint8",
-      "addr": 41660,
-      "size": 1,
-      "custom": null
-    },
-    {
-      "type": "uint8",
-      "addr": 41661,
-      "size": 1,
-      "custom": null
-    },
-    {
-      "type": "uint8",
-      "addr": 41662,
-      "size": 1,
-      "custom": null
-    },
-    {
-      "type": "uint8",
-      "addr": 41663,
-      "size": 1,
-      "custom": null
-    },
-    {
-      "type": "uint8",
-      "addr": 41664,
-      "size": 1,
-      "custom": null
-    },
-    {
-      "type": "uint8",
-      "addr": 41665,
-      "size": 1,
-      "custom": null
-    },
-    {
-      "type": "uint8",
-      "addr": 41666,
-      "size": 1,
-      "custom": null
-    },
-    {
-      "type": "uint8",
-      "addr": 41667,
-      "size": 1,
-      "custom": null
-    },
-    {
-      "type": "uint8",
-      "addr": 41668,
-      "size": 1,
-      "custom": null
-    },
-    {
-      "type": "uint8",
-      "addr": 41669,
-      "size": 1,
-      "custom": null
-    },
-    {
-      "type": "uint8",
-      "addr": 41670,
-      "size": 1,
-      "custom": null
-    },
-    {
-      "type": "uint8",
-      "addr": 41671,
-      "size": 1,
-      "custom": null
-    },
-    {
-      "type": "uint8",
+      "type": "string",
       "addr": 41672,
-      "size": 1,
+      "size": 13,
       "custom": null
     },
     {
-      "type": "uint8",
-      "addr": 41673,
-      "size": 1,
-      "custom": null
-    },
-    {
-      "type": "uint8",
-      "addr": 41674,
-      "size": 1,
-      "custom": null
-    },
-    {
-      "type": "uint8",
-      "addr": 41675,
-      "size": 1,
-      "custom": null
-    },
-    {
-      "type": "uint8",
-      "addr": 41676,
-      "size": 1,
-      "custom": null
-    },
-    {
-      "type": "uint8",
-      "addr": 41677,
-      "size": 1,
-      "custom": null
-    },
-    {
-      "type": "uint8",
-      "addr": 41678,
-      "size": 1,
-      "custom": null
-    },
-    {
-      "type": "uint8",
-      "addr": 41679,
-      "size": 1,
-      "custom": null
-    },
-    {
-      "type": "uint8",
-      "addr": 41680,
-      "size": 1,
-      "custom": null
-    },
-    {
-      "type": "uint8",
-      "addr": 41681,
-      "size": 1,
-      "custom": null
-    },
-    {
-      "type": "uint8",
-      "addr": 41682,
-      "size": 1,
-      "custom": null
-    },
-    {
-      "type": "uint8",
-      "addr": 41683,
-      "size": 1,
-      "custom": null
-    },
-    {
-      "type": "uint8",
-      "addr": 41684,
-      "size": 1,
-      "custom": null
-    },
-    {
-      "type": "uint8",
+      "type": "string",
       "addr": 41685,
-      "size": 1,
+      "size": 15,
       "custom": null
     },
     {
-      "type": "uint8",
-      "addr": 41686,
-      "size": 1,
-      "custom": null
-    },
-    {
-      "type": "uint8",
-      "addr": 41687,
-      "size": 1,
-      "custom": null
-    },
-    {
-      "type": "uint8",
-      "addr": 41688,
-      "size": 1,
-      "custom": null
-    },
-    {
-      "type": "uint8",
-      "addr": 41689,
-      "size": 1,
-      "custom": null
-    },
-    {
-      "type": "uint8",
-      "addr": 41690,
-      "size": 1,
-      "custom": null
-    },
-    {
-      "type": "uint8",
-      "addr": 41691,
-      "size": 1,
-      "custom": null
-    },
-    {
-      "type": "uint8",
-      "addr": 41692,
-      "size": 1,
-      "custom": null
-    },
-    {
-      "type": "uint8",
-      "addr": 41693,
-      "size": 1,
-      "custom": null
-    },
-    {
-      "type": "uint8",
-      "addr": 41694,
-      "size": 1,
-      "custom": null
-    },
-    {
-      "type": "uint8",
-      "addr": 41695,
-      "size": 1,
-      "custom": null
-    },
-    {
-      "type": "uint8",
-      "addr": 41696,
-      "size": 1,
-      "custom": null
-    },
-    {
-      "type": "uint8",
-      "addr": 41697,
-      "size": 1,
-      "custom": null
-    },
-    {
-      "type": "uint8",
-      "addr": 41698,
-      "size": 1,
-      "custom": null
-    },
-    {
-      "type": "uint8",
-      "addr": 41699,
-      "size": 1,
-      "custom": null
-    },
-    {
-      "type": "uint8",
+      "type": "string",
       "addr": 41700,
-      "size": 1,
+      "size": 9,
       "custom": null
     },
     {
-      "type": "uint8",
-      "addr": 41701,
-      "size": 1,
-      "custom": null
-    },
-    {
-      "type": "uint8",
-      "addr": 41702,
-      "size": 1,
-      "custom": null
-    },
-    {
-      "type": "uint8",
-      "addr": 41703,
-      "size": 1,
-      "custom": null
-    },
-    {
-      "type": "uint8",
-      "addr": 41704,
-      "size": 1,
-      "custom": null
-    },
-    {
-      "type": "uint8",
-      "addr": 41705,
-      "size": 1,
-      "custom": null
-    },
-    {
-      "type": "uint8",
-      "addr": 41706,
-      "size": 1,
-      "custom": null
-    },
-    {
-      "type": "uint8",
-      "addr": 41707,
-      "size": 1,
-      "custom": null
-    },
-    {
-      "type": "uint8",
-      "addr": 41708,
-      "size": 1,
-      "custom": null
-    },
-    {
-      "type": "uint8",
+      "type": "string",
       "addr": 41709,
-      "size": 1,
+      "size": 19,
       "custom": null
     },
     {
-      "type": "uint8",
-      "addr": 41710,
-      "size": 1,
-      "custom": null
-    },
-    {
-      "type": "uint8",
-      "addr": 41711,
-      "size": 1,
-      "custom": null
-    },
-    {
-      "type": "uint8",
-      "addr": 41712,
-      "size": 1,
-      "custom": null
-    },
-    {
-      "type": "uint8",
-      "addr": 41713,
-      "size": 1,
-      "custom": null
-    },
-    {
-      "type": "uint8",
-      "addr": 41714,
-      "size": 1,
-      "custom": null
-    },
-    {
-      "type": "uint8",
-      "addr": 41715,
-      "size": 1,
-      "custom": null
-    },
-    {
-      "type": "uint8",
-      "addr": 41716,
-      "size": 1,
-      "custom": null
-    },
-    {
-      "type": "uint8",
-      "addr": 41717,
-      "size": 1,
-      "custom": null
-    },
-    {
-      "type": "uint8",
-      "addr": 41718,
-      "size": 1,
-      "custom": null
-    },
-    {
-      "type": "uint8",
-      "addr": 41719,
-      "size": 1,
-      "custom": null
-    },
-    {
-      "type": "uint8",
-      "addr": 41720,
-      "size": 1,
-      "custom": null
-    },
-    {
-      "type": "uint8",
-      "addr": 41721,
-      "size": 1,
-      "custom": null
-    },
-    {
-      "type": "uint8",
-      "addr": 41722,
-      "size": 1,
-      "custom": null
-    },
-    {
-      "type": "uint8",
-      "addr": 41723,
-      "size": 1,
-      "custom": null
-    },
-    {
-      "type": "uint8",
-      "addr": 41724,
-      "size": 1,
-      "custom": null
-    },
-    {
-      "type": "uint8",
-      "addr": 41725,
-      "size": 1,
-      "custom": null
-    },
-    {
-      "type": "uint8",
-      "addr": 41726,
-      "size": 1,
-      "custom": null
-    },
-    {
-      "type": "uint8",
-      "addr": 41727,
-      "size": 1,
-      "custom": null
-    },
-    {
-      "type": "uint8",
+      "type": "string",
       "addr": 41728,
-      "size": 1,
+      "size": 14,
       "custom": null
     },
     {
-      "type": "uint8",
-      "addr": 41729,
-      "size": 1,
-      "custom": null
-    },
-    {
-      "type": "uint8",
-      "addr": 41730,
-      "size": 1,
-      "custom": null
-    },
-    {
-      "type": "uint8",
-      "addr": 41731,
-      "size": 1,
-      "custom": null
-    },
-    {
-      "type": "uint8",
-      "addr": 41732,
-      "size": 1,
-      "custom": null
-    },
-    {
-      "type": "uint8",
-      "addr": 41733,
-      "size": 1,
-      "custom": null
-    },
-    {
-      "type": "uint8",
-      "addr": 41734,
-      "size": 1,
-      "custom": null
-    },
-    {
-      "type": "uint8",
-      "addr": 41735,
-      "size": 1,
-      "custom": null
-    },
-    {
-      "type": "uint8",
-      "addr": 41736,
-      "size": 1,
-      "custom": null
-    },
-    {
-      "type": "uint8",
-      "addr": 41737,
-      "size": 1,
-      "custom": null
-    },
-    {
-      "type": "uint8",
-      "addr": 41738,
-      "size": 1,
-      "custom": null
-    },
-    {
-      "type": "uint8",
-      "addr": 41739,
-      "size": 1,
-      "custom": null
-    },
-    {
-      "type": "uint8",
-      "addr": 41740,
-      "size": 1,
-      "custom": null
-    },
-    {
-      "type": "uint8",
-      "addr": 41741,
-      "size": 1,
-      "custom": null
-    },
-    {
-      "type": "uint8",
+      "type": "string",
       "addr": 41742,
-      "size": 1,
+      "size": 16,
       "custom": null
     },
     {
-      "type": "uint8",
-      "addr": 41743,
-      "size": 1,
-      "custom": null
-    },
-    {
-      "type": "uint8",
-      "addr": 41744,
-      "size": 1,
-      "custom": null
-    },
-    {
-      "type": "uint8",
-      "addr": 41745,
-      "size": 1,
-      "custom": null
-    },
-    {
-      "type": "uint8",
-      "addr": 41746,
-      "size": 1,
-      "custom": null
-    },
-    {
-      "type": "uint8",
-      "addr": 41747,
-      "size": 1,
-      "custom": null
-    },
-    {
-      "type": "uint8",
-      "addr": 41748,
-      "size": 1,
-      "custom": null
-    },
-    {
-      "type": "uint8",
-      "addr": 41749,
-      "size": 1,
-      "custom": null
-    },
-    {
-      "type": "uint8",
-      "addr": 41750,
-      "size": 1,
-      "custom": null
-    },
-    {
-      "type": "uint8",
-      "addr": 41751,
-      "size": 1,
-      "custom": null
-    },
-    {
-      "type": "uint8",
-      "addr": 41752,
-      "size": 1,
-      "custom": null
-    },
-    {
-      "type": "uint8",
-      "addr": 41753,
-      "size": 1,
-      "custom": null
-    },
-    {
-      "type": "uint8",
-      "addr": 41754,
-      "size": 1,
-      "custom": null
-    },
-    {
-      "type": "uint8",
-      "addr": 41755,
-      "size": 1,
-      "custom": null
-    },
-    {
-      "type": "uint8",
-      "addr": 41756,
-      "size": 1,
-      "custom": null
-    },
-    {
-      "type": "uint8",
-      "addr": 41757,
-      "size": 1,
-      "custom": null
-    },
-    {
-      "type": "uint8",
+      "type": "string",
       "addr": 41758,
-      "size": 1,
+      "size": 6,
       "custom": null
     },
     {
-      "type": "uint8",
-      "addr": 41759,
-      "size": 1,
-      "custom": null
-    },
-    {
-      "type": "uint8",
-      "addr": 41760,
-      "size": 1,
-      "custom": null
-    },
-    {
-      "type": "uint8",
-      "addr": 41761,
-      "size": 1,
-      "custom": null
-    },
-    {
-      "type": "uint8",
-      "addr": 41762,
-      "size": 1,
-      "custom": null
-    },
-    {
-      "type": "uint8",
-      "addr": 41763,
-      "size": 1,
-      "custom": null
-    },
-    {
-      "type": "uint8",
+      "type": "string",
       "addr": 41764,
-      "size": 1,
+      "size": 4,
       "custom": null
     },
     {
-      "type": "uint8",
-      "addr": 41765,
-      "size": 1,
-      "custom": null
-    },
-    {
-      "type": "uint8",
-      "addr": 41766,
-      "size": 1,
-      "custom": null
-    },
-    {
-      "type": "uint8",
-      "addr": 41767,
-      "size": 1,
-      "custom": null
-    },
-    {
-      "type": "uint8",
+      "type": "pointer",
       "addr": 41768,
-      "size": 1,
+      "size": 2,
       "custom": null
     },
     {
-      "type": "uint8",
-      "addr": 41769,
-      "size": 1,
-      "custom": null
-    },
-    {
-      "type": "uint8",
+      "type": "pointer",
       "addr": 41770,
-      "size": 1,
+      "size": 2,
       "custom": null
     },
     {
-      "type": "uint8",
-      "addr": 41771,
-      "size": 1,
-      "custom": null
-    },
-    {
-      "type": "uint8",
+      "type": "pointer",
       "addr": 41772,
-      "size": 1,
+      "size": 2,
       "custom": null
     },
     {
-      "type": "uint8",
-      "addr": 41773,
-      "size": 1,
-      "custom": null
-    },
-    {
-      "type": "uint8",
+      "type": "pointer",
       "addr": 41774,
-      "size": 1,
+      "size": 2,
       "custom": null
     },
     {
-      "type": "uint8",
-      "addr": 41775,
-      "size": 1,
-      "custom": null
-    },
-    {
-      "type": "uint8",
+      "type": "pointer",
       "addr": 41776,
-      "size": 1,
+      "size": 2,
       "custom": null
     },
     {
-      "type": "uint8",
-      "addr": 41777,
-      "size": 1,
-      "custom": null
-    },
-    {
-      "type": "uint8",
+      "type": "pointer",
       "addr": 41778,
-      "size": 1,
+      "size": 2,
       "custom": null
     },
     {
-      "type": "uint8",
-      "addr": 41779,
-      "size": 1,
-      "custom": null
-    },
-    {
-      "type": "uint8",
+      "type": "pointer",
       "addr": 41780,
-      "size": 1,
+      "size": 2,
       "custom": null
     },
     {
-      "type": "uint8",
-      "addr": 41781,
-      "size": 1,
-      "custom": null
-    },
-    {
-      "type": "uint8",
+      "type": "pointer",
       "addr": 41782,
-      "size": 1,
+      "size": 2,
       "custom": null
     },
     {
-      "type": "uint8",
-      "addr": 41783,
-      "size": 1,
-      "custom": null
-    },
-    {
-      "type": "uint8",
+      "type": "pointer",
       "addr": 41784,
-      "size": 1,
+      "size": 2,
       "custom": null
     },
     {
-      "type": "uint8",
-      "addr": 41785,
-      "size": 1,
-      "custom": null
-    },
-    {
-      "type": "uint8",
+      "type": "pointer",
       "addr": 41786,
-      "size": 1,
+      "size": 2,
       "custom": null
     },
     {
-      "type": "uint8",
-      "addr": 41787,
-      "size": 1,
-      "custom": null
-    },
-    {
-      "type": "uint8",
+      "type": "pointer",
       "addr": 41788,
-      "size": 1,
+      "size": 2,
       "custom": null
     },
     {
-      "type": "uint8",
-      "addr": 41789,
-      "size": 1,
-      "custom": null
-    },
-    {
-      "type": "uint8",
+      "type": "pointer",
       "addr": 41790,
-      "size": 1,
+      "size": 2,
       "custom": null
     },
     {
-      "type": "uint8",
-      "addr": 41791,
-      "size": 1,
-      "custom": null
-    },
-    {
-      "type": "uint8",
+      "type": "pointer",
       "addr": 41792,
-      "size": 1,
+      "size": 2,
       "custom": null
     },
     {
-      "type": "uint8",
-      "addr": 41793,
-      "size": 1,
-      "custom": null
-    },
-    {
-      "type": "uint8",
+      "type": "pointer",
       "addr": 41794,
-      "size": 1,
+      "size": 2,
       "custom": null
     },
     {
-      "type": "uint8",
-      "addr": 41795,
-      "size": 1,
-      "custom": null
-    },
-    {
-      "type": "uint8",
+      "type": "pointer",
       "addr": 41796,
-      "size": 1,
+      "size": 2,
       "custom": null
     },
     {
-      "type": "uint8",
-      "addr": 41797,
-      "size": 1,
-      "custom": null
-    },
-    {
-      "type": "uint8",
+      "type": "pointer",
       "addr": 41798,
-      "size": 1,
+      "size": 2,
       "custom": null
     },
     {
-      "type": "uint8",
-      "addr": 41799,
-      "size": 1,
-      "custom": null
-    },
-    {
-      "type": "uint8",
+      "type": "pointer",
       "addr": 41800,
-      "size": 1,
+      "size": 2,
       "custom": null
     },
     {
-      "type": "uint8",
-      "addr": 41801,
-      "size": 1,
-      "custom": null
-    },
-    {
-      "type": "uint8",
+      "type": "pointer",
       "addr": 41802,
-      "size": 1,
+      "size": 2,
       "custom": null
     },
     {
-      "type": "uint8",
-      "addr": 41803,
-      "size": 1,
-      "custom": null
-    },
-    {
-      "type": "uint8",
+      "type": "pointer",
       "addr": 41804,
-      "size": 1,
+      "size": 2,
       "custom": null
     },
     {
-      "type": "uint8",
-      "addr": 41805,
-      "size": 1,
-      "custom": null
-    },
-    {
-      "type": "uint8",
+      "type": "pointer",
       "addr": 41806,
-      "size": 1,
+      "size": 2,
       "custom": null
     },
     {
-      "type": "uint8",
-      "addr": 41807,
-      "size": 1,
-      "custom": null
-    },
-    {
-      "type": "uint8",
+      "type": "pointer",
       "addr": 41808,
-      "size": 1,
+      "size": 2,
       "custom": null
     },
     {
-      "type": "uint8",
-      "addr": 41809,
-      "size": 1,
-      "custom": null
-    },
-    {
-      "type": "uint8",
+      "type": "pointer",
       "addr": 41810,
-      "size": 1,
+      "size": 2,
       "custom": null
     },
     {
-      "type": "uint8",
-      "addr": 41811,
-      "size": 1,
-      "custom": null
-    },
-    {
-      "type": "uint8",
+      "type": "pointer",
       "addr": 41812,
-      "size": 1,
+      "size": 2,
       "custom": null
     },
     {
-      "type": "uint8",
-      "addr": 41813,
-      "size": 1,
-      "custom": null
-    },
-    {
-      "type": "uint8",
+      "type": "pointer",
       "addr": 41814,
-      "size": 1,
+      "size": 2,
       "custom": null
     },
     {
-      "type": "uint8",
-      "addr": 41815,
-      "size": 1,
-      "custom": null
-    },
-    {
-      "type": "uint8",
+      "type": "pointer",
       "addr": 41816,
-      "size": 1,
+      "size": 2,
       "custom": null
     },
     {
-      "type": "uint8",
-      "addr": 41817,
-      "size": 1,
-      "custom": null
-    },
-    {
-      "type": "uint8",
+      "type": "pointer",
       "addr": 41818,
-      "size": 1,
+      "size": 2,
       "custom": null
     },
     {
-      "type": "uint8",
-      "addr": 41819,
-      "size": 1,
-      "custom": null
-    },
-    {
-      "type": "uint8",
+      "type": "pointer",
       "addr": 41820,
-      "size": 1,
+      "size": 2,
       "custom": null
     },
     {
-      "type": "uint8",
-      "addr": 41821,
-      "size": 1,
-      "custom": null
-    },
-    {
-      "type": "uint8",
+      "type": "pointer",
       "addr": 41822,
-      "size": 1,
+      "size": 2,
       "custom": null
     },
     {
-      "type": "uint8",
-      "addr": 41823,
-      "size": 1,
-      "custom": null
-    },
-    {
-      "type": "uint8",
+      "type": "pointer",
       "addr": 41824,
-      "size": 1,
+      "size": 2,
       "custom": null
     },
     {
-      "type": "uint8",
-      "addr": 41825,
-      "size": 1,
-      "custom": null
-    },
-    {
-      "type": "uint8",
+      "type": "pointer",
       "addr": 41826,
-      "size": 1,
+      "size": 2,
       "custom": null
     },
     {
-      "type": "uint8",
-      "addr": 41827,
-      "size": 1,
-      "custom": null
-    },
-    {
-      "type": "uint8",
+      "type": "string",
       "addr": 41828,
-      "size": 1,
+      "size": 5,
       "custom": null
     },
     {
-      "type": "uint8",
-      "addr": 41829,
-      "size": 1,
-      "custom": null
-    },
-    {
-      "type": "uint8",
-      "addr": 41830,
-      "size": 1,
-      "custom": null
-    },
-    {
-      "type": "uint8",
-      "addr": 41831,
-      "size": 1,
-      "custom": null
-    },
-    {
-      "type": "uint8",
-      "addr": 41832,
-      "size": 1,
-      "custom": null
-    },
-    {
-      "type": "uint8",
+      "type": "string",
       "addr": 41833,
-      "size": 1,
+      "size": 13,
       "custom": null
     },
     {
-      "type": "uint8",
-      "addr": 41834,
-      "size": 1,
-      "custom": null
-    },
-    {
-      "type": "uint8",
-      "addr": 41835,
-      "size": 1,
-      "custom": null
-    },
-    {
-      "type": "uint8",
-      "addr": 41836,
-      "size": 1,
-      "custom": null
-    },
-    {
-      "type": "uint8",
-      "addr": 41837,
-      "size": 1,
-      "custom": null
-    },
-    {
-      "type": "uint8",
-      "addr": 41838,
-      "size": 1,
-      "custom": null
-    },
-    {
-      "type": "uint8",
-      "addr": 41839,
-      "size": 1,
-      "custom": null
-    },
-    {
-      "type": "uint8",
-      "addr": 41840,
-      "size": 1,
-      "custom": null
-    },
-    {
-      "type": "uint8",
-      "addr": 41841,
-      "size": 1,
-      "custom": null
-    },
-    {
-      "type": "uint8",
-      "addr": 41842,
-      "size": 1,
-      "custom": null
-    },
-    {
-      "type": "uint8",
-      "addr": 41843,
-      "size": 1,
-      "custom": null
-    },
-    {
-      "type": "uint8",
-      "addr": 41844,
-      "size": 1,
-      "custom": null
-    },
-    {
-      "type": "uint8",
-      "addr": 41845,
-      "size": 1,
-      "custom": null
-    },
-    {
-      "type": "uint8",
+      "type": "string",
       "addr": 41846,
-      "size": 1,
+      "size": 11,
       "custom": null
     },
     {
-      "type": "uint8",
-      "addr": 41847,
-      "size": 1,
-      "custom": null
-    },
-    {
-      "type": "uint8",
-      "addr": 41848,
-      "size": 1,
-      "custom": null
-    },
-    {
-      "type": "uint8",
-      "addr": 41849,
-      "size": 1,
-      "custom": null
-    },
-    {
-      "type": "uint8",
-      "addr": 41850,
-      "size": 1,
-      "custom": null
-    },
-    {
-      "type": "uint8",
-      "addr": 41851,
-      "size": 1,
-      "custom": null
-    },
-    {
-      "type": "uint8",
-      "addr": 41852,
-      "size": 1,
-      "custom": null
-    },
-    {
-      "type": "uint8",
-      "addr": 41853,
-      "size": 1,
-      "custom": null
-    },
-    {
-      "type": "uint8",
-      "addr": 41854,
-      "size": 1,
-      "custom": null
-    },
-    {
-      "type": "uint8",
-      "addr": 41855,
-      "size": 1,
-      "custom": null
-    },
-    {
-      "type": "uint8",
-      "addr": 41856,
-      "size": 1,
-      "custom": null
-    },
-    {
-      "type": "uint8",
+      "type": "string",
       "addr": 41857,
-      "size": 1,
+      "size": 2,
       "custom": null
     },
     {
-      "type": "uint8",
-      "addr": 41858,
-      "size": 1,
-      "custom": null
-    },
-    {
-      "type": "uint8",
+      "type": "string",
       "addr": 41859,
-      "size": 1,
-      "custom": null
-    },
-    {
-      "type": "uint8",
-      "addr": 41860,
-      "size": 1,
-      "custom": null
-    },
-    {
-      "type": "uint8",
-      "addr": 41861,
-      "size": 1,
-      "custom": null
-    },
-    {
-      "type": "uint8",
-      "addr": 41862,
-      "size": 1,
-      "custom": null
-    },
-    {
-      "type": "uint8",
-      "addr": 41863,
-      "size": 1,
-      "custom": null
-    },
-    {
-      "type": "uint8",
-      "addr": 41864,
-      "size": 1,
-      "custom": null
-    },
-    {
-      "type": "uint8",
-      "addr": 41865,
-      "size": 1,
+      "size": 7,
       "custom": null
     },
     {
@@ -48168,6 +45150,37 @@
       "41088": "operators_priority",
       "41118": "commands_names",
       "41257": "function_names",
+      "41374": "too_many_file__error",
+      "41388": "file_open__error",
+      "41397": "file_not_open__error",
+      "41410": "file_not_found__error",
+      "41424": "device_not_present__error",
+      "41442": "not_input_file__error",
+      "41456": "not_output_file__error",
+      "41471": "missing_file_name__error",
+      "41488": "illegal_device_number__error",
+      "41509": "next_without_for__error",
+      "41525": "syntax_error",
+      "41531": "return_without_gosub__error",
+      "41551": "out_of_data__error",
+      "41562": "illegal_quantity__error",
+      "41578": "overflow__error",
+      "41586": "out_of_memory__error",
+      "41599": "undefd_statement__error",
+      "41616": "bad_subscript__error",
+      "41629": "redimd_array__error",
+      "41642": "division_by_zero__error",
+      "41658": "illegal_direct__error",
+      "41672": "type_mismatch__error",
+      "41685": "string_too_long__error",
+      "41700": "file_data__error",
+      "41709": "formula_too_complex__error",
+      "41728": "cant_continue__error",
+      "41742": "undefd_function__error",
+      "41758": "verify__error",
+      "41764": "load__error",
+      "41768": "error_messages_table",
+      "41859": "break__error",
       "42562": "new_command",
       "42590": "clr_command",
       "42652": "list_command",
@@ -48316,7 +45329,38 @@
       "or_operator": 45030,
       "negation_operator": 49076,
       "not_operator": 44756,
-      "comparison_operators": 45078
+      "comparison_operators": 45078,
+      "error_messages_table": 41768,
+      "too_many_file__error": 41374,
+      "file_open__error": 41388,
+      "file_not_open__error": 41397,
+      "file_not_found__error": 41410,
+      "device_not_present__error": 41424,
+      "not_input_file__error": 41442,
+      "not_output_file__error": 41456,
+      "missing_file_name__error": 41471,
+      "illegal_device_number__error": 41488,
+      "next_without_for__error": 41509,
+      "syntax_error": 41525,
+      "return_without_gosub__error": 41531,
+      "out_of_data__error": 41551,
+      "illegal_quantity__error": 41562,
+      "overflow__error": 41578,
+      "out_of_memory__error": 41586,
+      "undefd_statement__error": 41599,
+      "bad_subscript__error": 41616,
+      "redimd_array__error": 41629,
+      "division_by_zero__error": 41642,
+      "illegal_direct__error": 41658,
+      "type_mismatch__error": 41672,
+      "string_too_long__error": 41685,
+      "file_data__error": 41700,
+      "formula_too_complex__error": 41709,
+      "cant_continue__error": 41728,
+      "undefd_function__error": 41742,
+      "verify__error": 41758,
+      "load__error": 41764,
+      "break__error": 41859
     }
   }
 }
