@@ -75,7 +75,7 @@ var linetypes = {
         to_html: function(thing, names) {
             return sprintf("<a href='#loc_%04x'>%s</a>", thing.val, names.for_display(thing.val));
         },
-        
+
     }
 };
 
@@ -89,11 +89,13 @@ function Line(type, addr, rom, size) {
 function line_as_dict(line) {
     return {
         type: line.type,
-        line: line.line,
         addr: line.addr,
         size: line.size,
-        val:  line.val,
     };
+}
+
+function line_from_dict(j, rom) {
+    return new Line(j.type, j.addr, rom, j.size);
 }
 
 // ------ //
@@ -229,7 +231,7 @@ Lines.prototype.load = function() {
             the_this.lines_list = null;
 
             for (var i in lines) {
-                it = list_append(it, lines[i]);
+                it = list_append(it, line_from_dict(lines[i], the_this.rom));
                 if (!the_this.lines_list) the_this.lines_list = it;
             }
 
@@ -346,6 +348,9 @@ function render_lineitem(line_item, lines) {
     var cb_names = element.getElementsByClassName('cb_name');
     var cb_names_onclick = function() {
         var name = prompt(sprintf('Name for address %04X', line_item.item.addr));
+        if (name == null)
+            return;
+
         lines.names.set(name, line_item.item.addr);
 
         var eles = document.getElementsByClassName(sprintf('ad_%04x', line_item.item.addr));
