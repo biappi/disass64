@@ -29,7 +29,6 @@ Segment.from_file = function (name, filename, address, on_completion) {
     request.responseType = "arraybuffer";
     request.open('GET', filename, true);
     request.send(null);
-
 }
 
 // ------- //
@@ -79,18 +78,53 @@ var linetypes = {
         val:     function(line, rom) {
             return rom.at(line.addr) + (rom.at(line.addr + 1) << 8);
         },
-        to_html: function(thing, names) {
+        to_element: function(thing, names) {
+            var html;
+            var target;
+
             if (thing.custom && thing.custom.target_delta) {
-                var val = thing.val + thing.custom.target_delta;
-                return sprintf(
+                target = thing.val + thing.custom.target_delta;
+                html = sprintf(
                     "<a href='#loc_%04x'>(%s %s %d)</a>",
-                    val,
-                    names.for_display(val),
+                    target,
+                    names.for_display(target),
                     thing.custom.target_delta > 0 ? '-' : '+',
                     Math.abs(thing.custom.target_delta)
                 );
             }
-            return sprintf("<a href='#loc_%04x'>%s</a>", thing.val, names.for_display(thing.val));
+            else {
+                target = thing.val;
+                html = sprintf(
+                    "<a href='#loc_%04x'>%s</a>",
+                    target,
+                    names.for_display(target)
+                );
+            }
+
+            var menu = {
+                rename_target: function () {
+                    return rename_address(names, target);
+                }
+            };
+
+            var holder = document.createElement('div');
+
+            holder.className = 'menuholder';
+            holder.innerHTML = html;
+
+            var menudiv = document.createElement('div');
+            menudiv.className = 'menu';
+            holder.appendChild(menudiv);
+
+            for (var m in menu) {
+                var a = document.createElement('a');
+                a.href = '#';
+                a.onclick = menu[m];
+                a.innerHTML = m;
+                menudiv.appendChild(a);
+            }
+
+            return holder;
         },
         extras: {
             target_delta: function(line, rom) {
@@ -114,6 +148,17 @@ function Line(type, addr, rom, size, custom) {
     this.size = size || linetypes[type].size;
     this.val  = linetypes[type].val(this, rom);
     this.custom = custom;
+}
+
+Line.prototype.to_element = function(names) {
+    var type = linetypes[this.type];
+
+    if (type.to_element)
+        return type.to_element(this, names);
+
+    var div = document.createElement('div');
+    div.innerHTML = type.to_html(this, names);
+    return div.firstChild;
 }
 
 function line_as_dict(line) {
@@ -394,19 +439,29 @@ function create_extra(lines, lineitem, extra) {
     }
 }
 
+
+function rename_address(names, addr) {
+    var name = prompt(
+        sprintf('Name for address %04X', addr),
+        names.label(addr)
+    );
+
+    names.set(name, addr);
+    return false;
+}
+
 function render_lineitem(line_item, lines) {
     var element = document.createElement('tr');
     element.innerHTML = render_line(line_item.item, lines.names);
 
+    var line_element = line_item.item.to_element(lines.names);
+    var placeholder  = element.querySelector('#placeholder');
+
+    placeholder.parentNode.replaceChild(line_element, placeholder);
+    
     var cb_names = element.getElementsByClassName('cb_name');
     var cb_names_onclick = function() {
-        var name = prompt(
-            sprintf('Name for address %04X', line_item.item.addr),
-            lines.names.label(line_item.item.addr)
-        );
-
-        lines.names.set(name, line_item.item.addr);
-        return false;
+        return rename_address(lines.names, line_item.item.addr);
     };
 
     for (var i = 0; i < cb_names.length; i++) {
@@ -446,7 +501,7 @@ function render_line(line, names) {
         line.addr
     );
 
-    var conv = '<div class="convmenu">';
+    var conv = '<div class="menu">';
     for (var i in linetypes[line.type].extras) {
         conv += "<a href='#' class='cb_ex_" + i + "'>" + i + "</a>"; 
     }
@@ -459,7 +514,7 @@ function render_line(line, names) {
     conv += '</div>';
 
     return [
-        '<td class="conversions">',
+        '<td class="menuholder conversions">',
         '<span class="edit">edit</span>',
         conv,
         '</td>',
@@ -471,7 +526,7 @@ function render_line(line, names) {
         '</td>',
         '<td class="line">',
         sprintf('<a name="loc_%04x"></a>', line.addr),
-        linetypes[line.type].to_html(line, names),
+        '<span id="placeholder"></span>',
         '</td>',
     ].join('');
 }
