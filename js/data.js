@@ -67,6 +67,16 @@ var linetypes = {
         },
     },
 
+    pointer: {
+        size:    2,
+        val:     function(line, rom) {
+            return rom.at(line.addr) + (rom.at(line.addr + 1) << 8);
+        },
+        to_html: function(thing, names) {
+            return sprintf("<a href='#loc_%04x'>%s</a>", thing.val, names.for_display(thing.val));
+        },
+        
+    }
 };
 
 function Line(type, addr, rom, size) {
@@ -405,7 +415,8 @@ function render_line(line, names) {
          addr,
         '</td>',
         '<td class="line">',
-        linetypes[line.type].to_html(line),
+        sprintf('<a name="loc_%04x"></a>', line.addr),
+        linetypes[line.type].to_html(line, names),
         '</td>',
     ].join('');
 }
