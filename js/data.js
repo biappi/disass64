@@ -70,6 +70,12 @@ var linetypes = {
             increase: function(line, rom) {
                 return new Line('string', line.addr, rom, line.size + 1);
             },
+            '+2': function(line, rom) {
+                return new Line('string', line.addr, rom, line.size + 2);
+            },
+            '+4': function(line, rom) {
+                return new Line('string', line.addr, rom, line.size + 4);
+            },
         },
     },
 
