@@ -432,13 +432,14 @@ Lines.prototype.fix_lines = function(line_item, newline) {
         line_item.item.element.parentNode.insertBefore(pad_item.item.element, line_item.item.element);
     }
 
-
     deleting = line_item.item.element;
     for (var i = 0; i < deleted_lines; i++) {
         var nextDeleting = deleting.nextSibling;
         deleting.parentNode.removeChild(deleting);
         deleting = nextDeleting;
     }
+
+    return new_lineitem;
 }
 
 Lines.prototype.convert = function(line_item, newtype) {
@@ -447,8 +448,23 @@ Lines.prototype.convert = function(line_item, newtype) {
     if (line.type == newtype)
         return;
 
-    var newline = new Line(newtype, line.addr, this.rom);
-    this.fix_lines(line_item, newline);
+    if (newtype == 'code') {
+        var mnemo = null;
+        var addr  = line.addr;
+        var i     = line_item;
+
+        do {
+            var newline = new Line(newtype, addr, this.rom);
+
+            i     = this.fix_lines(i, newline).next;
+            mnemo = newline.val.mnemo;
+            addr += newline.size;
+        } while (['JMP', 'RTS', 'RTI'].indexOf(mnemo) == -1);
+    }
+    else {
+        var newline = new Line(newtype, line.addr, this.rom);
+        this.fix_lines(line_item, newline);
+    }
 }
 
 function create_onclick(lines, lineitem, newtype) {
