@@ -145,7 +145,29 @@ var linetypes = {
                 return new Line('pointer', line.addr, rom, line.size, {target_delta: delta});
             }
         }
-    }
+    },
+
+    code: {
+        size: 1,
+        val: function(line, rom) {
+            var val = disassembleStep(rom, line.addr);
+            line.size = val.size(); // bleah
+            return {
+                instr: val.instr,
+                mnemo: val.mnemo(),
+                op1:   val.op1,
+                op2:   val.op2,
+                size:  val.size(),
+                mode:  val.adm,
+            };
+        },
+        to_html: function(thing) {
+            var mode = addressing_modes[thing.val.mode];
+            var ops  = sprintf(mode.format, mode.value(thing.val));
+            var dis  = thing.val.mnemo + '   ' + ops;
+            return '<pre>' + dis + '</pre>';
+        },
+    },
 };
 
 function Line(type, addr, rom, size, custom) {
