@@ -149,7 +149,7 @@ var addressing_modes = {
         format: ' $%04X',
         value: function(inst) {
             var opv  = inst.op1;
-            var targ = inst.pc + 2;
+            var targ = inst.addr + 2;
 
             if (opv&128) {
                 targ -= (opv ^ 255) + 1;

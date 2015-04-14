@@ -153,6 +153,7 @@ var linetypes = {
             var val = disassembleStep(rom, line.addr);
             line.size = val.size(); // bleah
             return {
+                addr:  val.addr,
                 instr: val.instr,
                 mnemo: val.mnemo(),
                 op1:   val.op1,
