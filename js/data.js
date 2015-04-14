@@ -33,6 +33,32 @@ Segment.from_file = function (name, filename, address, on_completion) {
 
 // ------- //
 
+function pointer_html(addr, string) {
+    return sprintf(
+        "<a href='#loc_%04x'>%s</a>",
+        addr,
+        string
+    );
+}
+
+var modes_to_html = {
+    imp: function(val) { return ''; },
+    acc: function(val) { return 'A'; },
+    imm: function(val) { return sprintf("#$%02X", val); },
+    abs: function(val) { return pointer_html(val, sprintf("$%04X", val)); },
+    rel: function(val) { return pointer_html(val, sprintf("$%04X", val)); },
+    zpg: function(val) { return pointer_html(val, sprintf("$%02X", val)); },
+    zpx: function(val) { return pointer_html(val, sprintf("$%02X", val)) + ', X'; },
+    zpy: function(val) { return pointer_html(val, sprintf("$%02X", val)) + ', Y'; },
+    abx: function(val) { return pointer_html(val, sprintf("$%04X", val)) + ', X'; },
+    aby: function(val) { return pointer_html(val, sprintf("$%04X", val)) + ', Y'; },
+    ind: function(val) { return '(' + pointer_html(val, sprintf("$%04X", val)) + ')'; },
+    inx: function(val) { return '(' + pointer_html(val, sprintf("$%02X", val)) + '), X'; },
+    iny: function(val) { return '(' + pointer_html(val, sprintf("$%02X", val)) + '), Y'; },
+};
+
+// ------- //
+
 var linetypes = {
     uint8: {
         size:    1,
@@ -90,18 +116,18 @@ var linetypes = {
 
             if (thing.custom && thing.custom.target_delta) {
                 target = thing.val + thing.custom.target_delta;
-                html = sprintf(
-                    "<a href='#loc_%04x'>(%s %s %d)</a>",
+                html = pointer_html(
                     target,
-                    names.for_display(target),
-                    thing.custom.target_delta > 0 ? '-' : '+',
-                    Math.abs(thing.custom.target_delta)
+                    sprintf("(%s %s %d)",
+                        names.for_display(target),
+                        thing.custom.target_delta > 0 ? '-' : '+',
+                        Math.abs(thing.custom.target_delta)
+                    )
                 );
             }
             else {
                 target = thing.val;
-                html = sprintf(
-                    "<a href='#loc_%04x'>%s</a>",
+                html = pointer_html(
                     target,
                     names.for_display(target)
                 );
@@ -163,10 +189,9 @@ var linetypes = {
             };
         },
         to_html: function(thing) {
-            var mode = addressing_modes[thing.val.mode];
-            var ops  = sprintf(mode.format, mode.value(thing.val));
-            var dis  = thing.val.mnemo + '   ' + ops;
-            return '<pre>' + dis + '</pre>';
+            var mode = modes_to_html[thing.val.mode];
+            var val  = addressing_modes[thing.val.mode].value(thing.val);
+            return '<span>' + thing.val.mnemo + '  ' + mode(val) + '</span>';
         },
     },
 };
