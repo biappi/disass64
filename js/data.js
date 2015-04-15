@@ -349,8 +349,10 @@ Names.prototype.label = function(addr) {
 function Lines(rom, element) {
     this.rom        = rom;
     this.lines_list = null;
+    this.addr_lines = {};
     this.names      = new Names();
     this.element    = element;
+    this.comments   = {};
 
     element.appendChild(document.createElement('table'));
 
@@ -379,15 +381,26 @@ Lines.prototype.load = function() {
             var it    = null;
 
             the_this.lines_list = null;
+            the_this.addr_lines = {};
 
             for (var i in lines) {
                 it = list_append(it, line_from_dict(lines[i], the_this.rom));
+                the_this.addr_lines[it.item.addr] = it;
                 if (!the_this.lines_list) the_this.lines_list = it;
             }
 
             the_this.names.load(saved.names);
-
+            the_this.comments = saved.comments;
             the_this.render();
+
+            for (var i in saved.all_code) {
+                var code = saved.all_code[i];
+                var line_item = the_this.addr_lines[code];
+
+                var newline = new Line('code', code, the_this.rom);
+                the_this.fix_lines(line_item, newline);
+            }
+
         }
     }
 
@@ -444,6 +457,7 @@ Lines.prototype.fix_lines = function(line_item, newline) {
 
     var new_lineitem  = list_append(line_item.prev, newline);
     new_lineitem.item.element = render_lineitem(new_lineitem, this);
+    this.addr_lines[new_lineitem.item.addr] = new_lineitem;
 
     var padding_addr  = newline.addr + newline.size;
     var padding_bytes = deleted_size - target_size;
@@ -454,15 +468,20 @@ Lines.prototype.fix_lines = function(line_item, newline) {
     for (var i = 0; i < padding_bytes; i++) {
         var pad = new Line('uint8', padding_addr + i, this.rom)
         pad_item = list_append(pad_item, pad);
+        this.addr_lines[pad_item.item.addr] = pad_item;
         pad_item.item.element = render_lineitem(pad_item, this);
         line_item.item.element.parentNode.insertBefore(pad_item.item.element, line_item.item.element);
     }
 
     deleting = line_item.item.element;
+    var deleting_list = line_item;
+
     for (var i = 0; i < deleted_lines; i++) {
         var nextDeleting = deleting.nextSibling;
         deleting.parentNode.removeChild(deleting);
+        delete this.addr_lines[deleting_list.item.addr];
         deleting = nextDeleting;
+        deleting_list = deleting_list.next;
     }
 
     return new_lineitem;
@@ -522,7 +541,7 @@ function rename_address(names, addr) {
 
 function render_lineitem(line_item, lines) {
     var element = document.createElement('tr');
-    element.innerHTML = render_line(line_item.item, lines.names);
+    element.innerHTML = render_line(line_item.item, lines.names, lines.comments);
 
     var line_element = line_item.item.to_element(lines.names);
     var placeholder  = element.querySelector('#placeholder');
@@ -559,7 +578,7 @@ function render_lineitem(line_item, lines) {
 __conversions = Object.keys(linetypes);
 __conversions.sort();
 
-function render_line(line, names) {
+function render_line(line, names, comments) {
     var label = sprintf(
         "<a href='#' class='cb_name lbl_%04x'>%s</a> ",
         line.addr,
@@ -583,6 +602,17 @@ function render_line(line, names) {
      
     conv += '</div>';
 
+    var com = [];
+    for (var i = line.addr; i < line.addr + line.size; i++) {
+        if (comments[i]) {
+            com.push(comments[i]);
+        }
+    }
+
+    if (com) {
+        com = com.join('\n');
+    }
+
     return [
         '<td class="menuholder conversions">',
         '<span class="edit">edit</span>',
@@ -598,6 +628,9 @@ function render_line(line, names) {
         sprintf('<a name="loc_%04x"></a>', line.addr),
         '<span id="placeholder"></span>',
         '</td>',
+        '<td class="comments"><pre>',
+        com,
+        '</pre></td>',
     ].join('');
 }
 
