@@ -4035,8 +4035,6 @@
         58462
     ],
     "comments": {
-        "11": "ASIC ROM Disassembly (English, \"S-C\")\nrom\ncuMentor for Applesoft",
-        "40960": "/scdocumentor/\nd on a disassembly of Applesoft BASIC\nple II. C64 BASIC V2 and Applesoft BASIC\nSIC for 6502, albeit on different versions,\nextensions. Nevertheless, they are still\nSander-Cederlof's Applestoft comments could\nver to the version of BASIC in the ROM of\ned by Michael Steil <mist64@mac.com>\n, content) welcome at:\nom\n----------------------------\nted so that it can be automatically\ns-references etc.\nop-level information. The first line\nwith \"--\" are separators.\ninternal comments.\nicate code to be disassembled.\nicate bytes to be dumped.\nolumn.\nindicate a heading. (Please leave one\nng.)\nindicate an overflow comment.",
         "40964": "'cbmbasic'",
         "40972": "*** BRANCH TABLE FOR TOKENS\n$80 $A831 END",
         "40974": "$81 $A742 FOR",
