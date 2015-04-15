@@ -99,7 +99,7 @@ var addressing_modes = {
     abs: {
         size:   3,
         format: ' $%04X',
-        value:  function(inst) { return inst.op2 << 8 || inst.op1; },
+        value:  function(inst) { return (inst.op2 << 8) | inst.op1; },
     },
 
     zpx: {
@@ -117,13 +117,13 @@ var addressing_modes = {
     abx: {
         size:   3,
         format: ' $%04X, X',
-        value:  function(inst) { return inst.op2 << 8 || inst.op1; }
+        value:  function(inst) { return (inst.op2 << 8) | inst.op1; }
     },
 
     aby: {
         size:   3,
         format: ' $%04X, Y',
-        value:  function(inst) { return inst.op2 << 8 || inst.op1; }
+        value:  function(inst) { return (inst.op2 << 8) | inst.op1; }
     },
 
     iny: {
@@ -141,7 +141,7 @@ var addressing_modes = {
     ind: {
         size:   3,
         format: ' ($%04X)',
-        value:  function(inst) { return inst.op2 << 8 || inst.op1; }
+        value:  function(inst) { return (inst.op2 << 8) | inst.op1; }
     },
 
     rel: {
